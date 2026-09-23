@@ -70,7 +70,7 @@ function TrackOrderContent() {
       courier: "Express Delivery Partner",
       trackingNumber: "TRK-" + Math.floor(100000 + Math.random() * 900000),
       estDelivery: "Expected in 2-3 Business Days",
-      items: [{ name: "Pavitra Pooja Samagri Order", qty: 1, price: 799 }],
+      items: [{ name: "Pooja Sanskar Samagri Order", qty: 1, price: 799 }],
       address: "Registered Delivery Address"
     };
 

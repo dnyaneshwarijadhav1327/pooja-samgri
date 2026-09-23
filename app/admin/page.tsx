@@ -24,7 +24,7 @@ export default async function AdminDashboardPage() {
           Admin Store Overview
         </h1>
         <p className="text-xs text-[#3A2A20]/70 mt-1">
-          Welcome back to Pavitra Pooja dashboard management.
+          Welcome back to Pooja Sanskar dashboard management.
         </p>
       </div>
 

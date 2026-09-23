@@ -25,7 +25,7 @@ export default function AboutPage() {
             Preserving Indian Spiritual Heritage
           </h2>
           <p>
-            Pavitra Pooja was established with a clear mission: to ensure that every household across India has access to genuine, unadulterated, and traditionally purified samagri for their daily morning prayers, festival rituals, and Yagnas.
+            Pooja Sanskar was established with a clear mission: to ensure that every household across India has access to genuine, unadulterated, and traditionally purified samagri for their daily morning prayers, festival rituals, and Yagnas.
           </p>
           <p>
             In today&apos;s fast-paced world, finding pure Bhimseni Kapoor, chemical-free bamboo-less dhoop, organic cow dung cakes (Shenachya Guarya), and authentic river Gangajal can be challenging. We bridge this gap by carefully selecting ingredients from authentic traditional sources and packaging them hygienically to maintain their sanctity during transit.

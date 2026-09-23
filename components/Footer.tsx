@@ -20,7 +20,7 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="text-xl font-serif font-bold text-[#FAF6EE] tracking-tight">
-                  Pavitra Pooja
+                  Pooja Sanskar
                 </h3>
                 <p className="text-[10px] text-[#D97706] tracking-wider uppercase font-medium">
                   Pure Samagri. Sacred Traditions.
@@ -166,7 +166,7 @@ export default function Footer() {
 
         {/* Bottom Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#FAF6EE]/60 gap-4">
-          <p>© 2026 Pavitra Pooja. All Rights Reserved.</p>
+          <p>© 2026 Pooja Sanskar. All Rights Reserved.</p>
           <p className="flex items-center gap-1">
             <span>🪔</span> Made with Devotion & Respect for Sacred Traditions
           </p>

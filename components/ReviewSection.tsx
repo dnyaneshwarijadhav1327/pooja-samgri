@@ -44,7 +44,7 @@ export default function ReviewSection() {
             Trusted by Thousands of Homes
           </h2>
           <p className="text-xs sm:text-sm text-[#3A2A20]/80">
-            Real feedback from families who rely on Pavitra Pooja for their daily worship and sacred occasions.
+            Real feedback from families who rely on Pooja Sanskar for their daily worship and sacred occasions.
           </p>
         </div>
 

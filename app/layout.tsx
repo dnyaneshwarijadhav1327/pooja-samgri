@@ -10,7 +10,7 @@ import ProductMakingVideoWidget from '@/components/ProductMakingVideoWidget';
 import FloatingPromoVideo from '@/components/FloatingPromoVideo';
 
 export const metadata: Metadata = {
-  title: 'Pavitra Pooja - Pure Samagri. Sacred Traditions.',
+  title: 'Pooja Sanskar - Pure Samagri. Sacred Traditions.',
   description: 'Authentic pooja samagri, carefully selected for your daily prayers, festivals and sacred rituals.',
 };
 

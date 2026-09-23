@@ -41,7 +41,7 @@ export default function SignupPage() {
             Create Account
           </h1>
           <p className="text-xs text-[#3A2A20]/70">
-            Join Pavitra Pooja for doorstep delivery of pure spiritual samagri.
+            Join Pooja Sanskar for doorstep delivery of pure spiritual samagri.
           </p>
         </div>
 
