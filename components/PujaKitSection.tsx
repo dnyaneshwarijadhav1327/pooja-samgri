@@ -1,55 +1,88 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, CheckCircle, Package } from 'lucide-react';
 import { useShop } from '@/context/ShopContext';
+import QuickViewModal, { QuickViewProduct } from './QuickViewModal';
 
-export default function PujaKitSection() {
+interface Props {
+  kits?: QuickViewProduct[];
+}
+
+export default function PujaKitSection({ kits = [] }: Props) {
   const { addToCart } = useShop();
+  const [selectedProduct, setSelectedProduct] = useState<QuickViewProduct | null>(null);
 
-  const kits = [
+  // Default Fallback Kits if database has no puja kits yet
+  const fallbackKits = [
     {
       id: "kit-1",
       name: "Daily Nitya Puja Kit",
       slug: "daily-nitya-puja-kit",
-      itemsCount: "12 Essential Items",
+      shortDesc: "12 Essential Items for daily morning worship.",
+      description: "Includes Gangajal, Dhoop cones, Bhimseni Kapoor, Cotton wicks, Brass diya, Matchboxes, Kumkum, Haldi, Chandan, Janeu, Attar & Bell.",
+      ingredients: "12 Authentic Puja Items + Storage Box",
       price: 799,
       mrp: 1199,
-      included: ["Gangajal 250ml", "Bhimseni Kapoor", "Herbal Dhoop Cones", "Cotton Wicks 100 Pcs", "Brass Diya", "Pure Kumkum & Haldi"],
-      image: "https://images.unsplash.com/photo-1574043864009-847d0f98fb91?auto=format&fit=crop&q=80&w=600"
+      discount: 33,
+      rating: 4.9,
+      reviewCount: 185,
+      quantityUnit: "Complete 12-Item Kit",
+      category: { name: "Puja Kits" },
+      images: [{ url: "https://images.unsplash.com/photo-1574043864009-847d0f98fb91?auto=format&fit=crop&q=80&w=800" }]
     },
     {
       id: "kit-2",
       name: "Shri Ganesh Puja Kit",
       slug: "shri-ganesh-puja-kit",
-      itemsCount: "21 Sacred Items",
+      shortDesc: "21 Sacred Items for Ganesh Chaturthi & Tuesday Vrat.",
+      description: "Contains Durva grass substitute bundle, Red cloth, Janeu pair, Modak prasad mold, Modak dhoop, Gangajal, Supari, Cardamom, Clove, Camphor, Dhoop, Kumkum, Haldi, Akshata, and Aarti booklet.",
+      ingredients: "21 Sacred Ritual Ingredients + Aarti Chalisa Booklet",
       price: 999,
       mrp: 1499,
-      included: ["Durva grass substitute bundle", "Red Chunri", "Janeu Pair", "Modak Prasad Mould", "Supari & Cardamom", "Ganesh Aarti Booklet"],
-      image: "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=600"
+      discount: 33,
+      rating: 5.0,
+      reviewCount: 154,
+      quantityUnit: "Complete 21-Item Kit",
+      category: { name: "Puja Kits" },
+      images: [{ url: "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=800" }]
     },
     {
       id: "kit-3",
       name: "Shri Lakshmi Prosperity Puja Kit",
       slug: "shri-lakshmi-prosperity-puja-kit",
-      itemsCount: "18 Ritual Items",
+      shortDesc: "Special kit for Diwali Lakshmi Puja and Friday Dhan Aakarshan.",
+      description: "Includes Kamal Gatta (Lotus Seeds), Yellow Kaudi (Cowrie shells), Gomti Chakra (5 Pcs), Shri Yantra Card, Pure Ghee Diya, Agarbatti, Red Chunri, Kuber Chalisa & Lakshmi Puja Paddhati guide.",
+      ingredients: "Kamal Gatta, Gomti Chakra, Yellow Kaudi, Chunri, Puja Book, Samagri",
       price: 1299,
       mrp: 1899,
-      included: ["Kamal Gatta Lotus Seeds", "Yellow Kaudi 5 Pcs", "Gomti Chakra", "Shri Yantra Card", "Ghee Diya & Chunri", "Lakshmi Puja Guide"],
-      image: "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=600"
+      discount: 31,
+      rating: 4.9,
+      reviewCount: 198,
+      quantityUnit: "Complete Kit + Guide",
+      category: { name: "Puja Kits" },
+      images: [{ url: "https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?auto=format&fit=crop&q=80&w=800" }]
     },
     {
       id: "kit-4",
       name: "Complete Home Havan Kit",
       slug: "complete-home-havan-kit-with-brass-kund",
-      itemsCount: "Full Kund + 7 Items",
+      shortDesc: "Solid copper/brass havan kund + 500g samagri + mango wood & ghee.",
+      description: "Everything required for conducting household Yajna or Griha Pravesh havan. Includes reusable heavy-duty Havan Kund, Mango wood sticks, Cow dung cakes, Havan samagri, Pure Cow Ghee (250g), Camphor & Havan spoon.",
+      ingredients: "Copper/Brass Havan Kund, Mango Wood, Ghee, 51-herb Samagri",
       price: 1699,
       mrp: 2499,
-      included: ["Heavy Copper/Brass Kund", "500g 51-herb Samagri", "Mango Wood Logs", "Desi Cow Dung Cakes", "Desi Cow Ghee (250g)", "Havan Spoon"],
-      image: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&q=80&w=600"
+      discount: 32,
+      rating: 5.0,
+      reviewCount: 280,
+      quantityUnit: "Full Box + Brass Kund",
+      category: { name: "Puja Kits" },
+      images: [{ url: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&q=80&w=800" }]
     }
   ];
+
+  const displayKits = kits.length > 0 ? kits : fallbackKits;
 
   return (
     <section className="py-16 bg-[#FAF6EE] border-b border-[#E4D9C5]">
@@ -70,84 +103,85 @@ export default function PujaKitSection() {
 
         {/* Kits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {kits.map((kit) => (
-            <div
-              key={kit.id}
-              className="bg-[#F5EFE4] rounded-2xl border border-[#E4D9C5] p-5 shadow-card hover:shadow-hover transition-all flex flex-col justify-between group"
-            >
-              <div>
-                <div className="relative h-44 rounded-xl overflow-hidden mb-4 border border-[#E4D9C5]">
-                  <img
-                    src={kit.image}
-                    alt={kit.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <span className="absolute top-2.5 right-2.5 bg-[#4A0E17] text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#D97706] flex items-center gap-1">
-                    <Package className="w-3 h-3" /> {kit.itemsCount}
-                  </span>
-                </div>
+          {displayKits.map((kit) => {
+            const mainImg = kit.images?.[0]?.url || 'https://images.unsplash.com/photo-1574043864009-847d0f98fb91?auto=format&fit=crop&q=80&w=800';
 
-                <h3 className="text-base font-serif font-bold text-[#4A0E17] mb-2 group-hover:text-[#D97706] transition-colors">
-                  {kit.name}
-                </h3>
-
-                {/* What's included preview */}
-                <div className="space-y-1 mb-4">
-                  <span className="text-[11px] font-bold text-[#D97706] uppercase tracking-wider block">
-                    What&apos;s Included:
-                  </span>
-                  <ul className="space-y-1 text-xs text-[#3A2A20]/80">
-                    {kit.included.slice(0, 3).map((item, i) => (
-                      <li key={i} className="flex items-center gap-1.5">
-                        <CheckCircle className="w-3 h-3 text-[#D97706] shrink-0" />
-                        <span className="truncate">{item}</span>
-                      </li>
-                    ))}
-                    {kit.included.length > 3 && (
-                      <li className="text-[10px] text-[#3A2A20]/50 italic pl-4">
-                        + {kit.included.length - 3} more items included
-                      </li>
-                    )}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Price & Action */}
-              <div className="pt-4 border-t border-[#E4D9C5] flex items-center justify-between">
+            return (
+              <div
+                key={kit.id}
+                className="bg-[#F5EFE4] rounded-2xl border border-[#E4D9C5] p-5 shadow-card hover:shadow-hover transition-all flex flex-col justify-between group"
+              >
                 <div>
-                  <span className="text-lg font-bold text-[#4A0E17]">₹{kit.price}</span>
-                  <span className="ml-1.5 text-xs text-[#3A2A20]/50 line-through">₹{kit.mrp}</span>
-                </div>
+                  {/* Kit Image Frame */}
+                  <Link href={`/product/${kit.slug}`} className="block">
+                    <div className="relative h-48 rounded-xl overflow-hidden mb-4 border border-[#E4D9C5] bg-stone-100">
+                      <img
+                        src={mainImg}
+                        alt={kit.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <span className="absolute top-2.5 right-2.5 bg-[#4A0E17] text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#D97706] flex items-center gap-1 shadow-sm">
+                        <Package className="w-3 h-3" /> {kit.quantityUnit}
+                      </span>
+                    </div>
 
-                <div className="flex items-center gap-2">
-                  <Link
-                    href={`/product/${kit.slug}`}
-                    className="px-3 py-2 rounded-lg bg-[#FAF6EE] hover:bg-[#E4D9C5] text-[#4A0E17] text-xs font-semibold border border-[#E4D9C5] transition-colors"
-                  >
-                    Details
+                    <h3 className="text-base font-serif font-bold text-[#4A0E17] mb-2 group-hover:text-[#D97706] transition-colors line-clamp-1">
+                      {kit.name}
+                    </h3>
                   </Link>
-                  <button
-                    onClick={() => addToCart({
-                      id: kit.id,
-                      name: kit.name,
-                      slug: kit.slug,
-                      price: kit.price,
-                      mrp: kit.mrp,
-                      image: kit.image,
-                      quantityUnit: kit.itemsCount,
-                    })}
-                    className="px-3 py-2 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold flex items-center gap-1 transition-colors"
-                  >
-                    <ShoppingBag className="w-3.5 h-3.5" /> Add
-                  </button>
-                </div>
-              </div>
 
-            </div>
-          ))}
+                  <p className="text-xs text-[#3A2A20]/75 line-clamp-2 leading-relaxed mb-4">
+                    {kit.shortDesc}
+                  </p>
+                </div>
+
+                {/* Price & Action */}
+                <div className="pt-4 border-t border-[#E4D9C5] flex items-center justify-between">
+                  <div>
+                    <span className="text-lg font-bold text-[#4A0E17]">₹{kit.price}</span>
+                    {kit.mrp > kit.price && (
+                      <span className="ml-1.5 text-xs text-[#3A2A20]/50 line-through">₹{kit.mrp}</span>
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={`/product/${kit.slug}`}
+                      className="px-3 py-2 rounded-lg bg-[#FAF6EE] hover:bg-[#E4D9C5] text-[#4A0E17] text-xs font-semibold border border-[#E4D9C5] transition-colors"
+                    >
+                      Details
+                    </Link>
+                    <button
+                      onClick={() => addToCart({
+                        id: kit.id,
+                        name: kit.name,
+                        slug: kit.slug,
+                        price: kit.price,
+                        mrp: kit.mrp,
+                        image: mainImg,
+                        quantityUnit: kit.quantityUnit,
+                      })}
+                      className="px-3 py-2 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold flex items-center gap-1 transition-colors"
+                    >
+                      <ShoppingBag className="w-3.5 h-3.5" /> Add
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            );
+          })}
         </div>
 
       </div>
+
+      {/* Quick View Modal */}
+      {selectedProduct && (
+        <QuickViewModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </section>
   );
 }

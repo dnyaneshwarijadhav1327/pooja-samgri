@@ -11,6 +11,16 @@ interface Props {
   }>;
 }
 
+// Generate static pages for all products at build time
+export async function generateStaticParams() {
+  try {
+    const products = await prisma.product.findMany({ select: { slug: true } });
+    return products.map((p) => ({ slug: p.slug }));
+  } catch {
+    return [];
+  }
+}
+
 export default async function ProductDetailPage({ params }: Props) {
   const { slug } = await params;
 

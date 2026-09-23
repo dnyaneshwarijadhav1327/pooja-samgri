@@ -75,7 +75,7 @@ export default function ReviewSection() {
                   <h4 className="text-xs font-bold text-[#4A0E17] flex items-center gap-1">
                     {rev.name}
                     {rev.verified && (
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" title="Verified Customer" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" aria-label="Verified Customer" />
                     )}
                   </h4>
                   <span className="text-[10px] text-[#3A2A20]/60">{rev.location}</span>

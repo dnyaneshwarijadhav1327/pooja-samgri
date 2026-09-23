@@ -2,20 +2,10 @@ import React from 'react';
 import { prisma } from '@/lib/prisma';
 import ShopClient from '@/components/ShopClient';
 
+export const dynamic = 'force-static';
 export const revalidate = 60;
 
-interface Props {
-  searchParams: Promise<{
-    category?: string;
-    search?: string;
-  }>;
-}
-
-export default async function ShopPage({ searchParams }: Props) {
-  const resolvedParams = await searchParams;
-  const initialCategory = resolvedParams?.category || '';
-  const initialSearch = resolvedParams?.search || '';
-
+export default async function ShopPage() {
   const rawProducts = await prisma.product.findMany({
     where: { isAvailable: true },
     orderBy: { createdAt: 'desc' },
@@ -40,8 +30,9 @@ export default async function ShopPage({ searchParams }: Props) {
     <ShopClient
       initialProducts={products}
       categories={categories}
-      initialCategory={initialCategory}
-      initialSearch={initialSearch}
+      initialCategory=""
+      initialSearch=""
     />
   );
 }
+

@@ -11,6 +11,20 @@ interface Props {
   }>;
 }
 
+// Generate static pages for all known festival slugs at build time
+export async function generateStaticParams() {
+  return [
+    { slug: 'diwali' },
+    { slug: 'ganesh-chaturthi' },
+    { slug: 'navratri' },
+    { slug: 'mahashivratri' },
+    { slug: 'janmashtami' },
+    { slug: 'satyanarayan-puja' },
+    { slug: 'griha-pravesh' },
+    { slug: 'ram-navami' },
+  ];
+}
+
 const festivalMeta: Record<string, { name: string; title: string; desc: string }> = {
   diwali: {
     name: "Diwali Mahotsav",

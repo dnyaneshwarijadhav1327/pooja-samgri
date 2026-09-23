@@ -96,7 +96,7 @@ async function main() {
     categoryMap[cat.slug] = created.id;
   }
 
-  // Create Products
+  // Create Products with Unique Authentic Images
   const products = [
     {
       name: "Pavitra Gangajal Bottle (500ml)",
@@ -116,8 +116,7 @@ async function main() {
       quantityUnit: "500ml Bottle",
       categoryId: categoryMap["pavitra-jal"],
       images: [
-        "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&q=80&w=800",
-        "https://images.unsplash.com/photo-1614088458028-e044199c0872?auto=format&fit=crop&q=80&w=800"
+        "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&q=80&w=800"
       ]
     },
     {
@@ -188,7 +187,7 @@ async function main() {
       slug: "pavitra-51-herbal-havan-samagri",
       shortDesc: "Blend of 51 sacred herbs, dry roots, seeds, and aromatic leaves.",
       description: "Authentic Vedic formulation containing 51 herbs including Agar, Tagar, Kapoor Kachri, Tulsi leaves, Till, Jowar, and Sugandh Mantri. Ensures complete and sanctified Yajna offerings.",
-      ingredients: "51 Sacred Herbs, Guggul, Loban, dry dry fruits, Till & Jowar",
+      ingredients: "51 Sacred Herbs, Guggul, Loban, dry fruits, Till & Jowar",
       howToUse: "Offer small pinches into active Havan fire while chanting mantras accompanied by cow ghee offerings.",
       price: 299,
       mrp: 399,
@@ -251,7 +250,7 @@ async function main() {
       slug: "pure-natural-roli-kumkum",
       shortDesc: "Authentic chemical-free turmeric & lime processed auspicious Kumkum.",
       description: "Traditional Kumkum prepared strictly using organic turmeric root and slaked lime. Skin-friendly, rich divine red hue ideal for deity tilak and auspicious celebrations.",
-      ingredients: "Organic Turmeric & Natural Alum / Slaked Lime process",
+      ingredients: "Organic Turmeric & Natural Alum process",
       howToUse: "Mix a pinch with a drop of Gangajal or pure water to apply Tilak on forehead or deity idols.",
       price: 120,
       mrp: 160,
@@ -265,90 +264,6 @@ async function main() {
       categoryId: categoryMap["puja-essentials"],
       images: [
         "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=800"
-      ]
-    },
-    {
-      name: "Organic Kasturi Haldi Powder (100g)",
-      slug: "organic-kasturi-haldi-powder",
-      shortDesc: "Aromatic wild turmeric powder for deity ritual abhishekam.",
-      description: "Pure Kasturi Manjal harvested naturally. Possesses a pleasant camphor-like aroma essential for holy bath offerings and festival rituals.",
-      ingredients: "100% Natural Wild Curcuma Aromatica Root",
-      howToUse: "Add to panchamrit or mix with water for idol abhishekam during puja.",
-      price: 135,
-      mrp: 180,
-      discount: 25,
-      rating: 4.8,
-      reviewCount: 65,
-      stock: 110,
-      isAvailable: true,
-      isFeatured: false,
-      quantityUnit: "100g Pack",
-      categoryId: categoryMap["puja-essentials"],
-      images: [
-        "https://images.unsplash.com/photo-1614088458028-e044199c0872?auto=format&fit=crop&q=80&w=800"
-      ]
-    },
-    {
-      name: "Shuddh Kumkum Akshata (200g)",
-      slug: "shuddh-kumkum-akshata",
-      shortDesc: "Whole unbroken rice grains coated in natural Kumkum & cow ghee.",
-      description: "Flawless unbroken rice grains mixed with natural vermillion and pure cow ghee. Symbolizes abundance and divine blessing during all sacred mantras.",
-      ingredients: "Unbroken Rice Grains, Pure Kumkum, Desi Cow Ghee",
-      howToUse: "Offer whole grains during mantra chanting, deity invitations, and blessing rituals.",
-      price: 110,
-      mrp: 150,
-      discount: 26,
-      rating: 4.8,
-      reviewCount: 52,
-      stock: 130,
-      isAvailable: true,
-      isFeatured: false,
-      quantityUnit: "200g Box",
-      categoryId: categoryMap["puja-essentials"],
-      images: [
-        "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=800"
-      ]
-    },
-    {
-      name: "Natural Chandan Paste & Powder (50g)",
-      slug: "natural-chandan-paste-powder",
-      shortDesc: "Pure Mysore sandalwood paste with cooling soothing aroma.",
-      description: "Grinded directly from authentic sandalwood blocks. Free from artificial perfumes or yellow dyes. Perfect for deity tilak and peace of mind.",
-      ingredients: "100% Pure Sandalwood Bark Powder",
-      howToUse: "Mix with Gangajal or rose water in a copper cup to form a fine paste for deity application.",
-      price: 280,
-      mrp: 350,
-      discount: 20,
-      rating: 4.9,
-      reviewCount: 118,
-      stock: 75,
-      isAvailable: true,
-      isFeatured: true,
-      quantityUnit: "50g Jar",
-      categoryId: categoryMap["puja-essentials"],
-      images: [
-        "https://images.unsplash.com/photo-1614088458028-e044199c0872?auto=format&fit=crop&q=80&w=800"
-      ]
-    },
-    {
-      name: "Sacred Puja Essentials Combo Box",
-      slug: "sacred-puja-essentials-combo-box",
-      shortDesc: "Complete monthly supply of Kumkum, Haldi, Akshata, Camphor & Wicks.",
-      description: "Everything required for daily household worship conveniently packed in airtight traditional tin containers.",
-      ingredients: "Bhimseni Kapoor (50g), Kumkum (50g), Haldi (50g), Akshata (100g), Cotton Wicks (100 Pcs)",
-      howToUse: "Keep in your home altar for quick daily morning and evening puja readiness.",
-      price: 499,
-      mrp: 699,
-      discount: 28,
-      rating: 4.9,
-      reviewCount: 230,
-      stock: 60,
-      isAvailable: true,
-      isFeatured: true,
-      quantityUnit: "5-in-1 Box",
-      categoryId: categoryMap["puja-kits"],
-      images: [
-        "https://images.unsplash.com/photo-1574043864009-847d0f98fb91?auto=format&fit=crop&q=80&w=800"
       ]
     },
     {
@@ -411,7 +326,7 @@ async function main() {
       quantityUnit: "Complete Kit + Guide",
       categoryId: categoryMap["puja-kits"],
       images: [
-        "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=800"
+        "https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?auto=format&fit=crop&q=80&w=800"
       ]
     },
     {
@@ -465,16 +380,6 @@ async function main() {
         isApproved: true,
       },
     });
-
-    await prisma.review.create({
-      data: {
-        productId: createdProduct.id,
-        userName: "Rajesh Kumar",
-        rating: 5,
-        comment: "Good quality and very convenient for our daily morning puja. Smells pure and traditional.",
-        isApproved: true,
-      },
-    });
   }
 
   // Create Coupons
@@ -498,7 +403,7 @@ async function main() {
     },
   });
 
-  console.log("Database successfully seeded with 16 authentic products, categories, coupons, and sample reviews!");
+  console.log("Database successfully seeded with authentic products and distinct kit images!");
 }
 
 main()

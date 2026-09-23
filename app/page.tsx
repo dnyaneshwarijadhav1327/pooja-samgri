@@ -2,18 +2,36 @@ import React from 'react';
 import { prisma } from '@/lib/prisma';
 import HeroSection from '@/components/HeroSection';
 import TrustSection from '@/components/TrustSection';
-import CategorySection from '@/components/CategorySection';
 import FeaturedProducts from '@/components/FeaturedProducts';
 import PujaKitSection from '@/components/PujaKitSection';
 import FestivalSection from '@/components/FestivalSection';
 import ReviewSection from '@/components/ReviewSection';
 
-export const revalidate = 60; // Refresh data every 60 seconds
+export const revalidate = 0; // Fresh updates for newly added admin products
 
 export default async function HomePage() {
+  // 1. Query ONLY Individual Essentials (Excludes Puja Kits)
   const rawProducts = await prisma.product.findMany({
-    where: { isAvailable: true },
+    where: {
+      isAvailable: true,
+      NOT: {
+        category: { slug: 'puja-kits' },
+      },
+    },
     take: 8,
+    orderBy: { createdAt: 'desc' },
+    include: {
+      category: true,
+      images: true,
+    },
+  });
+
+  // 2. Query ONLY Puja Kits for the dedicated Puja Kit section
+  const rawPujaKits = await prisma.product.findMany({
+    where: {
+      isAvailable: true,
+      category: { slug: 'puja-kits' },
+    },
     orderBy: { createdAt: 'desc' },
     include: {
       category: true,
@@ -23,7 +41,12 @@ export default async function HomePage() {
 
   const products = rawProducts.map((p) => ({
     ...p,
-    rating: p.rating,
+    category: { name: p.category.name },
+    images: p.images.map((img) => ({ url: img.url })),
+  }));
+
+  const pujaKits = rawPujaKits.map((p) => ({
+    ...p,
     category: { name: p.category.name },
     images: p.images.map((img) => ({ url: img.url })),
   }));
@@ -36,14 +59,11 @@ export default async function HomePage() {
       {/* 2. Trust Section */}
       <TrustSection />
 
-      {/* 3. Shop by Category */}
-      <CategorySection />
-
-      {/* 4. Featured Sacred Essentials */}
+      {/* 3. Featured Sacred Essentials (ONLY Individual Essentials - No Puja Kits) */}
       <FeaturedProducts products={products} />
 
-      {/* 5. Complete Puja Kits Showcase */}
-      <PujaKitSection />
+      {/* 5. Complete Puja Kits Showcase (ONLY Puja Kits) */}
+      <PujaKitSection kits={pujaKits} />
 
       {/* 6. Festival Collections */}
       <FestivalSection />

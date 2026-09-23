@@ -64,12 +64,6 @@ export default function Header() {
               Shop
             </Link>
             <Link
-              href="/#categories"
-              className="text-sm font-semibold text-[#3A2A20] hover:text-[#D97706] transition-colors"
-            >
-              Categories
-            </Link>
-            <Link
               href="/category/puja-kits"
               className="text-sm font-semibold text-[#3A2A20] hover:text-[#D97706] transition-colors"
             >
@@ -158,13 +152,6 @@ export default function Header() {
             className="block text-base font-serif font-semibold text-[#3A2A20] py-2 border-b border-[#E4D9C5]/50"
           >
             Shop All Samagri
-          </Link>
-          <Link
-            href="/#categories"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-serif font-semibold text-[#3A2A20] py-2 border-b border-[#E4D9C5]/50"
-          >
-            Shop by Category
           </Link>
           <Link
             href="/category/puja-kits"

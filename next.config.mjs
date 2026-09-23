@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: true,     // ← required for static export (no Next.js image server)
     remotePatterns: [
       {
         protocol: 'https',

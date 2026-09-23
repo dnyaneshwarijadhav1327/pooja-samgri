@@ -11,6 +11,16 @@ interface Props {
   }>;
 }
 
+// Generate static pages for all categories at build time
+export async function generateStaticParams() {
+  try {
+    const categories = await prisma.category.findMany({ select: { slug: true } });
+    return categories.map((c) => ({ slug: c.slug }));
+  } catch {
+    return [];
+  }
+}
+
 export default async function CategoryPage({ params }: Props) {
   const { slug } = await params;
 
