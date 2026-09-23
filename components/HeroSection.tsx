@@ -20,13 +20,6 @@ export const HERO_SLIDES = [
   },
   {
     id: 2,
-    url: '/homepage.png',
-    title: 'Complete Premium Puja Kits',
-    subtitle: 'Hand-curated complete kits for daily worship, festival rituals, and special ceremonies.',
-    badge: '🌿 100% Traditional Sourcing',
-  },
-   {
-    id: 2,
     url: '/page.png',
     title: 'Complete Premium Puja Kits',
     subtitle: 'Hand-curated complete kits for daily worship, festival rituals, and special ceremonies.',
