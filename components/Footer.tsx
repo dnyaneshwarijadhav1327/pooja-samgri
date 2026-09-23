@@ -46,10 +46,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Shop Categories */}
+          {/* Column 2: Popular Collections */}
           <div>
             <h4 className="text-sm font-serif font-bold text-[#D97706] uppercase tracking-wider mb-4">
-              Shop Categories
+              Popular Collections
             </h4>
             <ul className="space-y-2.5 text-xs text-[#FAF6EE]/80">
               <li>
