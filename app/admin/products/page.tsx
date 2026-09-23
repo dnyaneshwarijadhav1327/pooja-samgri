@@ -111,37 +111,27 @@ export default function AdminProductsPage() {
     setModalMode('EDIT');
   };
 
-  // Handle Image File Upload from Computer
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Handle Image File Upload from Computer / Mobile
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Show immediate local preview
-    const localPreviewUrl = URL.createObjectURL(file);
-    setImagePreview(localPreviewUrl);
-
     setUploadingFile(true);
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
 
-      const res = await fetch('/api/admin/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await res.json();
-      if (res.ok && data.url) {
-        setImageUrl(data.url);
-        setImagePreview(data.url);
-      } else {
-        alert('Failed to upload image file');
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const base64Url = event.target?.result as string;
+      if (base64Url) {
+        setImageUrl(base64Url);
+        setImagePreview(base64Url);
       }
-    } catch (err) {
-      console.error('File Upload Error:', err);
-    } finally {
       setUploadingFile(false);
-    }
+    };
+    reader.onerror = () => {
+      alert('Could not process image file');
+      setUploadingFile(false);
+    };
+    reader.readAsDataURL(file);
   };
 
   // Submit Add or Edit Product
