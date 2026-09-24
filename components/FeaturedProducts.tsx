@@ -14,13 +14,13 @@ export default function FeaturedProducts({ products }: Props) {
 
   return (
     <section className="py-10 sm:py-14 bg-white relative overflow-hidden border-b border-stone-200/80">
-      {/* Background Decorative Saffron Flower Motifs */}
+      {/* Background Decorative Saffron Flower Motifs - High Clarity */}
       <div 
-        className="absolute -top-12 -right-12 w-64 h-64 sm:w-80 sm:h-80 opacity-20 pointer-events-none select-none bg-contain bg-no-repeat bg-right-top mix-blend-multiply rotate-12"
+        className="absolute -top-6 -right-6 w-80 h-80 sm:w-[400px] sm:h-[400px] opacity-65 sm:opacity-75 pointer-events-none select-none bg-contain bg-no-repeat bg-right-top mix-blend-multiply rotate-6 transition-opacity"
         style={{ backgroundImage: "url('/images/saffron_bg.webp')" }}
       />
       <div 
-        className="absolute -bottom-16 -left-16 w-56 h-56 sm:w-72 sm:h-72 opacity-15 pointer-events-none select-none bg-contain bg-no-repeat bg-left-bottom mix-blend-multiply -rotate-45"
+        className="absolute -bottom-10 -left-10 w-72 h-72 sm:w-[360px] sm:h-[360px] opacity-55 sm:opacity-65 pointer-events-none select-none bg-contain bg-no-repeat bg-left-bottom mix-blend-multiply -rotate-12 transition-opacity"
         style={{ backgroundImage: "url('/images/saffron_bg.webp')" }}
       />
 
