@@ -13,11 +13,11 @@ export default function FeaturedProducts({ products }: Props) {
   const [selectedProduct, setSelectedProduct] = useState<QuickViewProduct | null>(null);
 
   return (
-    <section className="py-16 bg-[#F5EFE4] border-b border-[#E4D9C5]">
+    <section className="py-8 sm:py-10 bg-[#F5EFE4] border-b border-[#E4D9C5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 pb-4 border-b border-[#E4D9C5]">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 pb-3 border-b border-[#E4D9C5]">
           <div>
             <span className="text-xs font-serif uppercase tracking-widest text-[#D97706] font-semibold block mb-1">
               Handpicked Purity

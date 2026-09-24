@@ -32,7 +32,7 @@ export default function TrustSection() {
   ];
 
   return (
-    <section className="bg-[#F5EFE4] py-8 border-b border-[#E4D9C5]">
+    <section className="bg-[#F5EFE4] py-4 sm:py-5 border-b border-[#E4D9C5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {trustPoints.map((item, idx) => (
