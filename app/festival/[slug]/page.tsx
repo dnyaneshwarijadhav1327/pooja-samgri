@@ -3,26 +3,13 @@ import { prisma } from '@/lib/prisma';
 import ShopClient from '@/components/ShopClient';
 import { notFound } from 'next/navigation';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 interface Props {
   params: Promise<{
     slug: string;
   }>;
-}
-
-// Generate static pages for all known festival slugs at build time
-export async function generateStaticParams() {
-  return [
-    { slug: 'diwali' },
-    { slug: 'ganesh-chaturthi' },
-    { slug: 'navratri' },
-    { slug: 'mahashivratri' },
-    { slug: 'janmashtami' },
-    { slug: 'satyanarayan-puja' },
-    { slug: 'griha-pravesh' },
-    { slug: 'ram-navami' },
-  ];
 }
 
 const festivalMeta: Record<string, { name: string; title: string; desc: string }> = {
