@@ -33,11 +33,22 @@ export default function ShopClient({ initialProducts, categories, initialCategor
     return initialProducts
       .filter((product) => {
         // Category Filter
-        if (selectedCategory && product.category?.name.toLowerCase() !== selectedCategory.toLowerCase()) {
-          const matchedCategory = categories.find(c => c.slug === selectedCategory);
-          if (matchedCategory && product.category?.name.toLowerCase() !== matchedCategory.name.toLowerCase()) {
-            return false;
-          }
+        if (selectedCategory) {
+          const matchedCategory = categories.find(c => c.slug === selectedCategory || c.id === selectedCategory);
+          const productCatName = product.category?.name?.toLowerCase().trim();
+          const productCatSlug = (product as any).category?.slug;
+          const productCatId = (product as any).categoryId;
+
+          const isMatch =
+            (matchedCategory && (
+              productCatId === matchedCategory.id ||
+              productCatSlug === matchedCategory.slug ||
+              productCatName === matchedCategory.name.toLowerCase().trim()
+            )) ||
+            (productCatSlug && productCatSlug === selectedCategory) ||
+            (productCatName && productCatName === selectedCategory.toLowerCase().trim());
+
+          if (!isMatch) return false;
         }
 
         // Search Filter

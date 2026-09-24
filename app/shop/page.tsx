@@ -2,8 +2,8 @@ import React from 'react';
 import { prisma } from '@/lib/prisma';
 import ShopClient from '@/components/ShopClient';
 
-export const dynamic = 'force-static';
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function ShopPage() {
   const rawProducts = await prisma.product.findMany({
@@ -22,7 +22,8 @@ export default async function ShopPage() {
 
   const products = rawProducts.map((p) => ({
     ...p,
-    category: { name: p.category.name },
+    categoryId: p.categoryId,
+    category: { name: p.category.name, slug: p.category.slug },
     images: p.images.map((img) => ({ url: img.url })),
   }));
 
