@@ -6,6 +6,7 @@ import PujaKitSection from '@/components/PujaKitSection';
 import FestivalSection from '@/components/FestivalSection';
 import ReviewSection from '@/components/ReviewSection';
 
+export const dynamic = 'force-dynamic';
 export const revalidate = 0; // Fresh updates for newly added admin products
 
 export default async function HomePage() {
