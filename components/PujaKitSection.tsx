@@ -85,56 +85,56 @@ export default function PujaKitSection({ kits = [] }: Props) {
   const displayKits = kits.length > 0 ? kits : fallbackKits;
 
   return (
-    <section className="py-14 sm:py-16 bg-white relative overflow-hidden border-b border-stone-200/80">
-      {/* Background Decorative Hibiscus Flower Motifs - 100% Transparent, Sharp & Crisp */}
+    <section className="py-10 sm:py-16 bg-white relative overflow-hidden border-b border-stone-200/80">
+      {/* Background Decorative Hibiscus Flower Motifs - Responsive & Crisp */}
       <img
         src="/images/hibiscus_flower.png"
         alt=""
         aria-hidden="true"
-        className="absolute -top-8 -left-8 w-52 sm:w-68 lg:w-76 h-auto object-contain pointer-events-none select-none drop-shadow-md rotate-12"
+        className="absolute -top-4 -left-4 w-28 sm:w-52 lg:w-72 h-auto object-contain pointer-events-none select-none drop-shadow-sm rotate-12 opacity-85 sm:opacity-100"
       />
       <img
         src="/images/hibiscus_flower.png"
         alt=""
         aria-hidden="true"
-        className="absolute -bottom-10 -right-10 w-48 sm:w-60 lg:w-64 h-auto object-contain pointer-events-none select-none drop-shadow-md -rotate-12"
+        className="absolute -bottom-6 -right-6 w-24 sm:w-44 lg:w-60 h-auto object-contain pointer-events-none select-none drop-shadow-sm -rotate-12 opacity-80 sm:opacity-100"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-          <span className="text-xs font-serif uppercase tracking-widest text-[#D97706] font-semibold">
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-12 space-y-1 sm:space-y-2">
+          <span className="text-[10px] sm:text-xs font-serif uppercase tracking-widest text-[#D97706] font-semibold">
             All-In-One Sacred Ready Solutions
           </span>
-          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#4A0E17]">
+          <h2 className="text-xl sm:text-3xl font-serif font-bold text-[#4A0E17]">
             Complete Puja Kits
           </h2>
-          <p className="text-xs sm:text-sm text-[#3A2A20]/80">
+          <p className="text-[11px] sm:text-sm text-[#3A2A20]/80 px-2">
             Carefully curated ready-to-use ritual boxes containing all authentic samagri required for your prayers and Yagnas.
           </p>
         </div>
 
         {/* Kits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {displayKits.map((kit) => {
             const mainImg = kit.images?.[0]?.url || 'https://images.unsplash.com/photo-1574043864009-847d0f98fb91?auto=format&fit=crop&q=80&w=800';
 
             return (
               <div
                 key={kit.id}
-                className="bg-white rounded-2xl border border-stone-200/90 p-5 shadow-sm hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 p-3.5 sm:p-5 shadow-xs hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Kit Image Frame */}
                   <Link href={`/product/${kit.slug}`} className="block">
-                    <div className="relative h-48 rounded-xl overflow-hidden mb-4 border border-stone-100 bg-stone-50">
+                    <div className="relative h-40 sm:h-48 rounded-lg sm:rounded-xl overflow-hidden mb-3 sm:mb-4 border border-stone-100 bg-stone-50">
                       <img
                         src={mainImg}
                         alt={kit.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <span className="absolute top-2.5 right-2.5 bg-[#4A0E17] text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#D97706] flex items-center gap-1 shadow-sm">
+                      <span className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 bg-[#4A0E17] text-white text-[9px] sm:text-[10px] font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-[#D97706] flex items-center gap-1 shadow-sm">
                         <Package className="w-3 h-3" /> {kit.quantityUnit}
                       </span>
                     </div>

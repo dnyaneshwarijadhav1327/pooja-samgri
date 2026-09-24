@@ -138,46 +138,53 @@ export default function Header() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#F5EFE4] border-t border-[#E4D9C5] px-6 py-4 space-y-3">
+        <div className="lg:hidden bg-white border-t border-stone-200 px-6 py-4 space-y-2.5 shadow-lg animate-in slide-in-from-top-2">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-serif font-bold text-[#4A0E17] py-2 border-b border-[#E4D9C5]/50"
+            className="block text-sm font-serif font-bold text-[#4A0E17] py-2 border-b border-stone-100"
           >
             Home
           </Link>
           <Link
             href="/shop"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-serif font-semibold text-[#3A2A20] py-2 border-b border-[#E4D9C5]/50"
+            className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
           >
             Shop All Samagri
           </Link>
           <Link
             href="/category/puja-kits"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-serif font-semibold text-[#3A2A20] py-2 border-b border-[#E4D9C5]/50"
+            className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
           >
             Complete Puja Kits
           </Link>
           <Link
             href="/about"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-serif font-semibold text-[#3A2A20] py-2 border-b border-[#E4D9C5]/50"
+            className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
           >
             About Us
           </Link>
           <Link
             href="/contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-serif font-semibold text-[#3A2A20] py-2 border-b border-[#E4D9C5]/50"
+            className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
           >
             Contact Support
           </Link>
           <Link
+            href="/account"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
+          >
+            👤 My Account
+          </Link>
+          <Link
             href="/track-order"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-serif font-semibold text-[#D97706] py-2"
+            className="block text-sm font-serif font-bold text-[#D97706] py-2"
           >
             📦 Track Your Order
           </Link>
