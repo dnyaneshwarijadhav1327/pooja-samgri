@@ -86,18 +86,18 @@ export default function PujaKitSection({ kits = [] }: Props) {
 
   return (
     <section className="py-14 sm:py-16 bg-white relative overflow-hidden border-b border-stone-200/80">
-      {/* Background Decorative Hibiscus Flower Motifs - Crystal Clear HD */}
+      {/* Background Decorative Hibiscus Flower Motifs - 100% Transparent, Sharp & Crisp */}
       <img
-        src="/images/hibiscus_bg.jpg"
+        src="/images/hibiscus_flower.png"
         alt=""
         aria-hidden="true"
-        className="absolute -top-6 -left-6 w-48 sm:w-64 lg:w-72 h-auto object-contain opacity-90 pointer-events-none select-none rotate-12"
+        className="absolute -top-8 -left-8 w-52 sm:w-68 lg:w-76 h-auto object-contain pointer-events-none select-none drop-shadow-md rotate-12"
       />
       <img
-        src="/images/hibiscus_bg.jpg"
+        src="/images/hibiscus_flower.png"
         alt=""
         aria-hidden="true"
-        className="absolute -bottom-10 -right-10 w-44 sm:w-56 lg:w-64 h-auto object-contain opacity-80 pointer-events-none select-none -rotate-6"
+        className="absolute -bottom-10 -right-10 w-48 sm:w-60 lg:w-64 h-auto object-contain pointer-events-none select-none drop-shadow-md -rotate-12"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
