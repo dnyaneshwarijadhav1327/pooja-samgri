@@ -64,7 +64,7 @@ export default function FestivalSection() {
   ];
 
   return (
-    <section className="py-16 bg-[#F5EFE4] border-b border-[#E4D9C5]">
+    <section className="py-16 bg-white border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

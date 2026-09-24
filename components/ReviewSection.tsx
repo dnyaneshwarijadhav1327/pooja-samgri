@@ -32,7 +32,7 @@ export default function ReviewSection() {
   ];
 
   return (
-    <section className="py-16 bg-[#FAF6EE]">
+    <section className="py-16 bg-white border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -53,7 +53,7 @@ export default function ReviewSection() {
           {reviews.map((rev, idx) => (
             <div
               key={idx}
-              className="bg-[#F5EFE4] rounded-2xl p-6 border border-[#E4D9C5] shadow-card flex flex-col justify-between relative"
+              className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between relative"
             >
               <Quote className="w-8 h-8 text-[#D97706]/20 absolute top-4 right-4" />
 

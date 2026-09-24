@@ -52,13 +52,13 @@ export default function ProductCard({ product, onQuickView }: Props) {
   };
 
   return (
-    <div className="group relative bg-[#F5EFE4] rounded-2xl border border-[#E4D9C5] overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 flex flex-col justify-between">
+    <div className="group relative bg-white rounded-2xl border border-stone-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 flex flex-col justify-between">
       
       {/* Clickable Product Card Link Wrapper */}
       <Link href={`/product/${product.slug}`} className="block flex-1 p-4">
         
         {/* Product Image Area */}
-        <div className="relative w-full h-48 sm:h-52 rounded-xl bg-stone-100 overflow-hidden mb-3 border border-[#E4D9C5]/60">
+        <div className="relative w-full h-48 sm:h-52 rounded-xl bg-stone-50 overflow-hidden mb-3 border border-stone-100">
           <img
             src={mainImage}
             alt={product.name}
@@ -77,7 +77,7 @@ export default function ProductCard({ product, onQuickView }: Props) {
             <button
               onClick={handleWishlist}
               className={`p-2 rounded-full shadow-md backdrop-blur-xs transition-colors ${
-                inWish ? 'bg-red-500 text-white' : 'bg-[#FAF6EE]/90 text-[#4A0E17] hover:bg-[#D97706] hover:text-white'
+                inWish ? 'bg-red-500 text-white' : 'bg-white/95 text-[#4A0E17] hover:bg-[#D97706] hover:text-white'
               }`}
               title="Add to Wishlist"
             >
@@ -86,7 +86,7 @@ export default function ProductCard({ product, onQuickView }: Props) {
             
             <button
               onClick={handleQuickViewClick}
-              className="p-2 rounded-full bg-[#FAF6EE]/90 text-[#4A0E17] hover:bg-[#D97706] hover:text-white shadow-md backdrop-blur-xs transition-colors"
+              className="p-2 rounded-full bg-white/95 text-[#4A0E17] hover:bg-[#D97706] hover:text-white shadow-md backdrop-blur-xs transition-colors"
               title="Quick View"
             >
               <Eye className="w-3.5 h-3.5" />
@@ -125,7 +125,7 @@ export default function ProductCard({ product, onQuickView }: Props) {
       </Link>
 
       {/* Card Footer: Price & Add to Cart */}
-      <div className="px-4 pb-4 pt-2 flex items-center justify-between border-t border-[#E4D9C5]/40 mt-2">
+      <div className="px-4 pb-4 pt-2 flex items-center justify-between border-t border-stone-100 mt-2">
         <div>
           <span className="text-base font-bold text-[#4A0E17]">₹{product.price}</span>
           {product.mrp > product.price && (

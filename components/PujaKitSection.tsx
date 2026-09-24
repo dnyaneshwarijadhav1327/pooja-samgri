@@ -85,8 +85,18 @@ export default function PujaKitSection({ kits = [] }: Props) {
   const displayKits = kits.length > 0 ? kits : fallbackKits;
 
   return (
-    <section className="py-16 bg-[#FAF6EE] border-b border-[#E4D9C5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-14 sm:py-16 bg-white relative overflow-hidden border-b border-stone-200/80">
+      {/* Background Decorative Hibiscus Flower Motifs */}
+      <div 
+        className="absolute -top-10 -left-10 w-64 h-64 sm:w-88 sm:h-88 opacity-15 pointer-events-none select-none bg-contain bg-no-repeat bg-left-top mix-blend-multiply rotate-45"
+        style={{ backgroundImage: "url('/images/hibiscus_bg.jpg')" }}
+      />
+      <div 
+        className="absolute -bottom-16 -right-16 w-60 h-60 sm:w-80 sm:h-80 opacity-15 pointer-events-none select-none bg-contain bg-no-repeat bg-right-bottom mix-blend-multiply -rotate-12"
+        style={{ backgroundImage: "url('/images/hibiscus_bg.jpg')" }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
@@ -109,12 +119,12 @@ export default function PujaKitSection({ kits = [] }: Props) {
             return (
               <div
                 key={kit.id}
-                className="bg-[#F5EFE4] rounded-2xl border border-[#E4D9C5] p-5 shadow-card hover:shadow-hover transition-all flex flex-col justify-between group"
+                className="bg-white rounded-2xl border border-stone-200/90 p-5 shadow-sm hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Kit Image Frame */}
                   <Link href={`/product/${kit.slug}`} className="block">
-                    <div className="relative h-48 rounded-xl overflow-hidden mb-4 border border-[#E4D9C5] bg-stone-100">
+                    <div className="relative h-48 rounded-xl overflow-hidden mb-4 border border-stone-100 bg-stone-50">
                       <img
                         src={mainImg}
                         alt={kit.name}
@@ -136,7 +146,7 @@ export default function PujaKitSection({ kits = [] }: Props) {
                 </div>
 
                 {/* Price & Action */}
-                <div className="pt-4 border-t border-[#E4D9C5] flex items-center justify-between">
+                <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
                   <div>
                     <span className="text-lg font-bold text-[#4A0E17]">₹{kit.price}</span>
                     {kit.mrp > kit.price && (
@@ -147,7 +157,7 @@ export default function PujaKitSection({ kits = [] }: Props) {
                   <div className="flex items-center gap-2">
                     <Link
                       href={`/product/${kit.slug}`}
-                      className="px-3 py-2 rounded-lg bg-[#FAF6EE] hover:bg-[#E4D9C5] text-[#4A0E17] text-xs font-semibold border border-[#E4D9C5] transition-colors"
+                      className="px-3 py-2 rounded-lg bg-stone-50 hover:bg-stone-100 text-[#4A0E17] text-xs font-semibold border border-stone-200 transition-colors"
                     >
                       Details
                     </Link>
@@ -161,7 +171,7 @@ export default function PujaKitSection({ kits = [] }: Props) {
                         image: mainImg,
                         quantityUnit: kit.quantityUnit,
                       })}
-                      className="px-3 py-2 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold flex items-center gap-1 transition-colors"
+                      className="px-3 py-2 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-xs"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" /> Add
                     </button>
