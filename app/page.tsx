@@ -1,7 +1,6 @@
 import React from 'react';
 import { prisma } from '@/lib/prisma';
 import HeroSection from '@/components/HeroSection';
-import TrustSection from '@/components/TrustSection';
 import FeaturedProducts from '@/components/FeaturedProducts';
 import PujaKitSection from '@/components/PujaKitSection';
 import FestivalSection from '@/components/FestivalSection';
@@ -56,10 +55,7 @@ export default async function HomePage() {
       {/* 1. Hero Section */}
       <HeroSection />
 
-      {/* 2. Trust Section */}
-      <TrustSection />
-
-      {/* 3. Featured Sacred Essentials (ONLY Individual Essentials - No Puja Kits) */}
+      {/* 2. Featured Sacred Essentials (ONLY Individual Essentials - No Puja Kits) */}
       <FeaturedProducts products={products} />
 
       {/* 5. Complete Puja Kits Showcase (ONLY Puja Kits) */}
