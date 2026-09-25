@@ -104,7 +104,21 @@ export default function ProductMakingSection() {
   return (
     <section className="py-12 sm:py-16 bg-[#FAF6EE] relative overflow-hidden border-b border-stone-200/80">
       
-      {/* Background Decorative Motifs */}
+      {/* Background Decorative Yellow Hibiscus Flower Motifs - Responsive & Crisp */}
+      <img
+        src="/images/yellow_hibiscus.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute -top-4 -right-4 w-28 sm:w-52 lg:w-72 h-auto object-contain pointer-events-none select-none drop-shadow-sm rotate-12 opacity-85 sm:opacity-100 z-0"
+      />
+      <img
+        src="/images/yellow_hibiscus.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute -bottom-6 -left-6 w-24 sm:w-44 lg:w-60 h-auto object-contain pointer-events-none select-none drop-shadow-sm -rotate-45 opacity-80 sm:opacity-100 z-0"
+      />
+
+      {/* Background Decorative Ambient Glow */}
       <div className="absolute -top-10 -right-10 w-64 h-64 bg-[#D97706]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-[#4A0E17]/5 rounded-full blur-3xl pointer-events-none" />
 
