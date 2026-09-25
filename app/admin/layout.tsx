@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, Package, Folders, ShoppingCart, 
-  Star, Tag, ArrowLeft, ShieldCheck, Menu, X, Lock, KeyRound, Mail, Eye, EyeOff, CheckCircle2, RefreshCw
+  Star, Tag, Video, ArrowLeft, ShieldCheck, Menu, X, Lock, KeyRound, Mail, Eye, EyeOff, CheckCircle2, RefreshCw
 } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -374,6 +374,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Manage Products', href: '/admin/products', icon: Package },
     { name: 'Manage Categories', href: '/admin/categories', icon: Folders },
     { name: 'Customer Orders', href: '/admin/orders', icon: ShoppingCart },
+    { name: 'Product Making Videos', href: '/admin/videos', icon: Video },
     { name: 'Reviews Moderation', href: '/admin/reviews', icon: Star },
     { name: 'Discount Coupons', href: '/admin/coupons', icon: Tag },
   ];

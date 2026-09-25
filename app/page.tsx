@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 import HeroSection from '@/components/HeroSection';
 import FeaturedProducts from '@/components/FeaturedProducts';
 import PujaKitSection from '@/components/PujaKitSection';
-import FestivalSection from '@/components/FestivalSection';
+import ProductMakingSection from '@/components/ProductMakingSection';
 import ReviewSection from '@/components/ReviewSection';
 
 export const dynamic = 'force-dynamic';
@@ -81,7 +81,7 @@ const fallbackEssentials = [
 ];
 
 export default async function HomePage() {
-  let products = fallbackEssentials;
+  let products: any[] = fallbackEssentials;
   let pujaKits: any[] = [];
 
   try {
@@ -144,10 +144,10 @@ export default async function HomePage() {
       {/* 5. Complete Puja Kits Showcase (ONLY Puja Kits) */}
       <PujaKitSection kits={pujaKits} />
 
-      {/* 6. Festival Collections */}
-      <FestivalSection />
+      {/* 4. Product Making Videos Showcase ("How Our Sacred Products Are Made") */}
+      <ProductMakingSection />
 
-      {/* 7. Devotee Customer Reviews */}
+      {/* 5. Devotee Customer Reviews */}
       <ReviewSection />
     </main>
   );

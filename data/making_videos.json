@@ -1,0 +1,56 @@
+[
+  {
+    "id": "vid-1",
+    "title": "Pure Hand-Rolled Cotton Diya Wicks (Phool Batti)",
+    "category": "Diya Wicks",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-smoke-from-incense-sticks-41131-large.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?auto=format&fit=crop&q=80&w=600",
+    "duration": "1:30 min",
+    "description": "Handcrafted by rural artisans using 100% unbleached virgin cotton for steady, long-lasting aarti flames."
+  },
+  {
+    "id": "vid-2",
+    "title": "Authentic Organic Bhimseni Camphor Distillation",
+    "category": "Camphor & Dhoop",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-smoke-from-incense-sticks-41131-large.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1574043864009-847d0f98fb91?auto=format&fit=crop&q=80&w=600",
+    "duration": "2:15 min",
+    "description": "Pure crystalline flakes harvested directly from pine trees, burning 100% cleanly without black residue."
+  },
+  {
+    "id": "vid-3",
+    "title": "Sacred Mysore Sandalwood & Turmeric Paste Preparation",
+    "category": "Sacred Pastes",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-smoke-from-incense-sticks-41131-large.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1614088458028-e044199c0872?auto=format&fit=crop&q=80&w=600",
+    "duration": "1:45 min",
+    "description": "Traditional stone-grinding of fragrant Mysore Sandalwood infused with Kashmiri saffron and Gangajal."
+  },
+  {
+    "id": "vid-4",
+    "title": "51-Herb Vedic Havan Samagri Formulation",
+    "category": "Havan Samagri",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-smoke-from-incense-sticks-41131-large.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&q=80&w=600",
+    "duration": "2:40 min",
+    "description": "Carefully selected blend of 51 Ayurvedic medicinal herbs, guggal, loban, and sacred dry fruits for auspicious Yagnas."
+  },
+  {
+    "id": "vid-5",
+    "title": "Hand-Rolled Natural Flora Agarbatti & Cow Dung Dhoop",
+    "category": "Incense Sticks",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-smoke-from-incense-sticks-41131-large.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=600",
+    "duration": "1:55 min",
+    "description": "Charcoal-free incense hand-rolled with temple flowers, essential oils, and sacred herbs."
+  },
+  {
+    "id": "vid-6",
+    "title": "Artisanal Pure Brass Diya & Bell Crafting",
+    "category": "Brass Utensils",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-smoke-from-incense-sticks-41131-large.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&q=80&w=600",
+    "duration": "2:10 min",
+    "description": "Traditional metalsmiths molding and engraving heavy pure brass diyas and resonant puja bells."
+  }
+]
