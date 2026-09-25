@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { ArrowRight, Flame, ShieldCheck, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 
 /**
  * HERO SLIDER IMAGES
@@ -15,15 +14,11 @@ export const HERO_SLIDES = [
     id: 1,
     url: '/Home.png',
     title: 'Bring Purity & Tradition Into Every Puja',
-    subtitle: 'Authentic pooja samagri, carefully selected for your daily prayers, sacred rituals, and auspicious festivals. Delivered with divine sanctity.',
-    badge: '🪔 Authentic & Purified Spiritual Essentials',
   },
   {
     id: 2,
     url: '/page.png',
     title: 'Complete Premium Puja Kits',
-    subtitle: 'Hand-curated complete kits for daily worship, festival rituals, and special ceremonies.',
-    badge: '🌿 100% Traditional Sourcing',
   },
 ];
 
@@ -79,58 +74,13 @@ export default function HeroSection() {
       {/* ── Decorative Warm Ambient Glow (subtle, non-darkening) ── */}
       <div className="absolute top-1/4 left-10 w-72 h-72 bg-[#D97706]/10 rounded-full blur-3xl pointer-events-none z-10" />
 
-      {/* ── Hero Text Content ── */}
+      {/* ── Hero Text Content (Only Large Bold Brown Headline) ── */}
       <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-        <div className="max-w-2xl space-y-4 pt-4 sm:pt-6">
-
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#D97706]/30 text-[#D97706] text-xs font-bold tracking-wide shadow-md">
-            <Flame className="w-3.5 h-3.5 text-[#D97706] animate-pulse" />
-            <span>{HERO_SLIDES[currentIndex].badge}</span>
-          </div>
-
+        <div className="max-w-3xl">
           {/* Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#4A0E17] leading-tight drop-shadow-sm min-h-[2.5em] sm:min-h-[2em] flex items-center">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#4A0E17] leading-tight drop-shadow-md">
             {HERO_SLIDES[currentIndex].title}
           </h1>
-
-          {/* Subtitle */}
-          <p className="text-base sm:text-lg text-[#3A2A20]/90 leading-relaxed max-w-xl font-medium drop-shadow-sm min-h-[3em] bg-white/50 backdrop-blur-xs px-4 py-2 rounded-xl border border-[#E4D9C5]/60">
-            {HERO_SLIDES[currentIndex].subtitle}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-start gap-4 pt-2">
-            <Link
-              href="/shop"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white text-sm font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2"
-            >
-              Shop Pooja Samagri <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/category/puja-kits"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/80 hover:bg-white text-[#4A0E17] text-sm font-serif font-bold border border-[#D97706]/30 hover:border-[#D97706] backdrop-blur-md transition-all flex items-center justify-center gap-2 shadow-md"
-            >
-              Explore Puja Kits 🪔
-            </Link>
-          </div>
-
-          {/* Trust badges */}
-          <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-semibold">
-            <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-xs px-3 py-1.5 rounded-lg border border-[#E4D9C5] text-[#4A0E17] shadow-sm">
-              <ShieldCheck className="w-4 h-4 text-[#D97706]" />
-              <span>100% Traditional Sourcing</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-xs px-3 py-1.5 rounded-lg border border-[#E4D9C5] text-[#4A0E17] shadow-sm">
-              <span className="text-[#D97706]">📦</span>
-              <span>Sanctified Packing</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-xs px-3 py-1.5 rounded-lg border border-[#E4D9C5] text-[#4A0E17] shadow-sm">
-              <span className="text-[#D97706]">⚡</span>
-              <span>Fast Delivery</span>
-            </div>
-          </div>
-
         </div>
       </div>
 
