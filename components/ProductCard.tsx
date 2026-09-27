@@ -52,7 +52,7 @@ export default function ProductCard({ product, onQuickView }: Props) {
   };
 
   return (
-    <div className="group relative bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 flex flex-col justify-between">
+    <div className="group relative bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 flex flex-col justify-between h-full">
       
       {/* Clickable Product Card Link Wrapper */}
       <Link href={`/product/${product.slug}`} className="block flex-1 p-2 sm:p-4">

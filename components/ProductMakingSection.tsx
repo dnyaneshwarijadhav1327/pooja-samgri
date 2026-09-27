@@ -101,6 +101,10 @@ export default function ProductMakingSection() {
     return url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg') || url.includes('mixkit.co');
   };
 
+  const half = Math.ceil(videos.length / 2);
+  const row1Videos = videos.slice(0, half);
+  const row2Videos = videos.slice(half).length > 0 ? videos.slice(half) : row1Videos;
+
   return (
     <section className="py-12 sm:py-16 bg-[#FAF6EE] relative overflow-hidden border-b border-stone-200/80">
       
@@ -140,68 +144,145 @@ export default function ProductMakingSection() {
           </p>
         </div>
 
-        {/* Video Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {videos.map((vid) => (
-            <div
-              key={vid.id}
-              onClick={() => setActiveVideo(vid)}
-              className="group bg-white rounded-2xl border border-[#E4D9C5] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#D97706] transition-all duration-300 cursor-pointer flex flex-col justify-between"
-            >
-              <div>
-                {/* Video Thumbnail with Play Button */}
-                <div className="relative aspect-video w-full overflow-hidden bg-[#380B12]">
-                  <img
-                    src={vid.thumbnail}
-                    alt={vid.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                  />
+        {/* Multi-Row Alternating Horizontal Marquee Animation */}
+        <div className="space-y-6 sm:space-y-8">
+          {/* Row 1: Left to Right Marquee */}
+          <div className="relative w-full overflow-hidden py-1">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-16 bg-gradient-to-r from-[#FAF6EE] via-[#FAF6EE]/80 to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-16 bg-gradient-to-l from-[#FAF6EE] via-[#FAF6EE]/80 to-transparent z-10" />
+            
+            <div className="animate-marquee-ltr flex items-stretch gap-4 sm:gap-6 marquee-track">
+              {[...row1Videos, ...row1Videos, ...row1Videos, ...row1Videos].map((vid, idx) => (
+                <div
+                  key={`vid-r1-${vid.id}-${idx}`}
+                  onClick={() => setActiveVideo(vid)}
+                  className="w-[260px] min-[480px]:w-[300px] sm:w-[340px] lg:w-[360px] shrink-0 flex flex-col justify-between group bg-white rounded-2xl border border-[#E4D9C5] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#D97706] transition-all duration-300 cursor-pointer h-full"
+                >
+                  <div>
+                    {/* Video Thumbnail with Play Button */}
+                    <div className="relative aspect-video w-full overflow-hidden bg-[#380B12]">
+                      <img
+                        src={vid.thumbnail}
+                        alt={vid.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                      />
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-                  {/* Play Button Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-13 h-13 rounded-full bg-[#D97706] text-white flex items-center justify-center shadow-xl group-hover:scale-115 group-hover:bg-[#B45309] transition-all duration-300 border-2 border-white/80">
-                      <Play className="w-6 h-6 fill-current ml-1" />
+                      {/* Play Button Button Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-12 sm:w-13 h-12 sm:h-13 rounded-full bg-[#D97706] text-white flex items-center justify-center shadow-xl group-hover:scale-115 group-hover:bg-[#B45309] transition-all duration-300 border-2 border-white/80">
+                          <Play className="w-5 sm:w-6 h-5 sm:h-6 fill-current ml-1" />
+                        </div>
+                      </div>
+
+                      {/* Category & Duration Badges */}
+                      <div className="absolute top-3 left-3">
+                        <span className="bg-[#4A0E17]/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-xs border border-[#D97706]/40 shadow-xs">
+                          {vid.category}
+                        </span>
+                      </div>
+
+                      <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-black/70 text-white text-[10px] font-semibold px-2 py-0.5 rounded-md backdrop-blur-xs">
+                        <Clock className="w-3 h-3 text-[#D97706]" />
+                        <span>{vid.duration}</span>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-4 sm:p-5 space-y-1.5 sm:space-y-2">
+                      <h3 className="text-sm sm:text-base font-serif font-bold text-[#4A0E17] group-hover:text-[#D97706] transition-colors line-clamp-1">
+                        {vid.title}
+                      </h3>
+                      <p className="text-[11px] sm:text-xs text-[#3A2A20]/75 line-clamp-2 leading-relaxed">
+                        {vid.description}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Category & Duration Badges */}
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-[#4A0E17]/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-xs border border-[#D97706]/40 shadow-xs">
-                      {vid.category}
+                  {/* Bottom CTA Bar */}
+                  <div className="px-4 sm:px-5 pb-4 pt-2 border-t border-stone-100 flex items-center justify-between text-xs">
+                    <span className="text-[#D97706] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform text-[11px] sm:text-xs">
+                      <Film className="w-3.5 h-3.5" /> Watch Making Video ➔
+                    </span>
+                    <span className="text-[10px] font-semibold text-stone-600 uppercase tracking-wider">
+                      Handcrafted
                     </span>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-                  <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-black/70 text-white text-[10px] font-semibold px-2 py-0.5 rounded-md backdrop-blur-xs">
-                    <Clock className="w-3 h-3 text-[#D97706]" />
-                    <span>{vid.duration}</span>
+          {/* Row 2: Right to Left Marquee */}
+          <div className="relative w-full overflow-hidden py-1">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-16 bg-gradient-to-r from-[#FAF6EE] via-[#FAF6EE]/80 to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-16 bg-gradient-to-l from-[#FAF6EE] via-[#FAF6EE]/80 to-transparent z-10" />
+            
+            <div className="animate-marquee-rtl flex items-stretch gap-4 sm:gap-6 marquee-track">
+              {[...row2Videos, ...row2Videos, ...row2Videos, ...row2Videos].map((vid, idx) => (
+                <div
+                  key={`vid-r2-${vid.id}-${idx}`}
+                  onClick={() => setActiveVideo(vid)}
+                  className="w-[260px] min-[480px]:w-[300px] sm:w-[340px] lg:w-[360px] shrink-0 flex flex-col justify-between group bg-white rounded-2xl border border-[#E4D9C5] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#D97706] transition-all duration-300 cursor-pointer h-full"
+                >
+                  <div>
+                    {/* Video Thumbnail with Play Button */}
+                    <div className="relative aspect-video w-full overflow-hidden bg-[#380B12]">
+                      <img
+                        src={vid.thumbnail}
+                        alt={vid.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                      />
+
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                      {/* Play Button Button Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-12 sm:w-13 h-12 sm:h-13 rounded-full bg-[#D97706] text-white flex items-center justify-center shadow-xl group-hover:scale-115 group-hover:bg-[#B45309] transition-all duration-300 border-2 border-white/80">
+                          <Play className="w-5 sm:w-6 h-5 sm:h-6 fill-current ml-1" />
+                        </div>
+                      </div>
+
+                      {/* Category & Duration Badges */}
+                      <div className="absolute top-3 left-3">
+                        <span className="bg-[#4A0E17]/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-xs border border-[#D97706]/40 shadow-xs">
+                          {vid.category}
+                        </span>
+                      </div>
+
+                      <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-black/70 text-white text-[10px] font-semibold px-2 py-0.5 rounded-md backdrop-blur-xs">
+                        <Clock className="w-3 h-3 text-[#D97706]" />
+                        <span>{vid.duration}</span>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-4 sm:p-5 space-y-1.5 sm:space-y-2">
+                      <h3 className="text-sm sm:text-base font-serif font-bold text-[#4A0E17] group-hover:text-[#D97706] transition-colors line-clamp-1">
+                        {vid.title}
+                      </h3>
+                      <p className="text-[11px] sm:text-xs text-[#3A2A20]/75 line-clamp-2 leading-relaxed">
+                        {vid.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bottom CTA Bar */}
+                  <div className="px-4 sm:px-5 pb-4 pt-2 border-t border-stone-100 flex items-center justify-between text-xs">
+                    <span className="text-[#D97706] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform text-[11px] sm:text-xs">
+                      <Film className="w-3.5 h-3.5" /> Watch Making Video ➔
+                    </span>
+                    <span className="text-[10px] font-semibold text-stone-600 uppercase tracking-wider">
+                      Handcrafted
+                    </span>
                   </div>
                 </div>
-
-                {/* Content */}
-                <div className="p-4 sm:p-5 space-y-2">
-                  <h3 className="text-base font-serif font-bold text-[#4A0E17] group-hover:text-[#D97706] transition-colors line-clamp-1">
-                    {vid.title}
-                  </h3>
-                  <p className="text-xs text-[#3A2A20]/75 line-clamp-2 leading-relaxed">
-                    {vid.description}
-                  </p>
-                </div>
-              </div>
-
-              {/* Bottom CTA Bar */}
-              <div className="px-4 sm:px-5 pb-4 pt-2 border-t border-stone-100 flex items-center justify-between text-xs">
-                <span className="text-[#D97706] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                  <Film className="w-3.5 h-3.5" /> Watch Making Video ➔
-                </span>
-                <span className="text-[10px] font-semibold text-stone-600 uppercase tracking-wider">
-                  Handcrafted
-                </span>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
       </div>

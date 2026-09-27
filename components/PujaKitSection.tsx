@@ -83,6 +83,77 @@ export default function PujaKitSection({ kits = [] }: Props) {
   ];
 
   const displayKits = kits.length > 0 ? kits : fallbackKits;
+  const half = Math.ceil(displayKits.length / 2);
+  const row1Kits = displayKits.slice(0, half);
+  const row2Kits = displayKits.slice(half).length > 0 ? displayKits.slice(half) : row1Kits;
+
+  const renderKitCard = (kit: any, uniqueKey: string) => {
+    const mainImg = kit.images?.[0]?.url || 'https://images.unsplash.com/photo-1574043864009-847d0f98fb91?auto=format&fit=crop&q=80&w=800';
+
+    return (
+      <div
+        key={uniqueKey}
+        className="w-[230px] min-[480px]:w-[270px] sm:w-[300px] lg:w-[320px] shrink-0 flex flex-col bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 p-3.5 sm:p-5 shadow-xs hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 justify-between group h-full"
+      >
+        <div>
+          {/* Kit Image Frame */}
+          <Link href={`/product/${kit.slug}`} className="block">
+            <div className="relative h-36 sm:h-48 rounded-lg sm:rounded-xl overflow-hidden mb-3 sm:mb-4 border border-stone-100 bg-stone-50">
+              <img
+                src={mainImg}
+                alt={kit.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <span className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 bg-[#4A0E17] text-white text-[9px] sm:text-[10px] font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-[#D97706] flex items-center gap-1 shadow-sm">
+                <Package className="w-3 h-3" /> {kit.quantityUnit}
+              </span>
+            </div>
+
+            <h3 className="text-sm sm:text-base font-serif font-bold text-[#4A0E17] mb-1.5 group-hover:text-[#D97706] transition-colors line-clamp-1">
+              {kit.name}
+            </h3>
+          </Link>
+
+          <p className="text-xs text-[#3A2A20]/75 line-clamp-2 leading-relaxed mb-4">
+            {kit.shortDesc}
+          </p>
+        </div>
+
+        {/* Price & Action */}
+        <div className="pt-3 sm:pt-4 border-t border-stone-100 flex items-center justify-between">
+          <div>
+            <span className="text-base sm:text-lg font-bold text-[#4A0E17]">₹{kit.price}</span>
+            {kit.mrp > kit.price && (
+              <span className="ml-1.5 text-xs text-[#3A2A20]/50 line-through">₹{kit.mrp}</span>
+            )}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Link
+              href={`/product/${kit.slug}`}
+              className="px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-stone-50 hover:bg-stone-100 text-[#4A0E17] text-xs font-semibold border border-stone-200 transition-colors"
+            >
+              Details
+            </Link>
+            <button
+              onClick={() => addToCart({
+                id: kit.id,
+                name: kit.name,
+                slug: kit.slug,
+                price: kit.price,
+                mrp: kit.mrp,
+                image: mainImg,
+                quantityUnit: kit.quantityUnit,
+              })}
+              className="px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-xs"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" /> Add
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section className="py-10 sm:py-16 bg-white relative overflow-hidden border-b border-stone-200/80">
@@ -115,76 +186,31 @@ export default function PujaKitSection({ kits = [] }: Props) {
           </p>
         </div>
 
-        {/* Kits Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {displayKits.map((kit) => {
-            const mainImg = kit.images?.[0]?.url || 'https://images.unsplash.com/photo-1574043864009-847d0f98fb91?auto=format&fit=crop&q=80&w=800';
+        {/* Multi-Row Alternating Horizontal Marquee Animation */}
+        <div className="space-y-4 sm:space-y-6">
+          {/* Row 1: Left to Right Marquee */}
+          <div className="relative w-full overflow-hidden py-1">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+            
+            <div className="animate-marquee-ltr flex items-stretch gap-3.5 sm:gap-6 marquee-track">
+              {[...row1Kits, ...row1Kits, ...row1Kits, ...row1Kits].map((kit, idx) =>
+                renderKitCard(kit, `kit-r1-${kit.id}-${idx}`)
+              )}
+            </div>
+          </div>
 
-            return (
-              <div
-                key={kit.id}
-                className="bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 p-3.5 sm:p-5 shadow-xs hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Kit Image Frame */}
-                  <Link href={`/product/${kit.slug}`} className="block">
-                    <div className="relative h-40 sm:h-48 rounded-lg sm:rounded-xl overflow-hidden mb-3 sm:mb-4 border border-stone-100 bg-stone-50">
-                      <img
-                        src={mainImg}
-                        alt={kit.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <span className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 bg-[#4A0E17] text-white text-[9px] sm:text-[10px] font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-[#D97706] flex items-center gap-1 shadow-sm">
-                        <Package className="w-3 h-3" /> {kit.quantityUnit}
-                      </span>
-                    </div>
-
-                    <h3 className="text-base font-serif font-bold text-[#4A0E17] mb-2 group-hover:text-[#D97706] transition-colors line-clamp-1">
-                      {kit.name}
-                    </h3>
-                  </Link>
-
-                  <p className="text-xs text-[#3A2A20]/75 line-clamp-2 leading-relaxed mb-4">
-                    {kit.shortDesc}
-                  </p>
-                </div>
-
-                {/* Price & Action */}
-                <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
-                  <div>
-                    <span className="text-lg font-bold text-[#4A0E17]">₹{kit.price}</span>
-                    {kit.mrp > kit.price && (
-                      <span className="ml-1.5 text-xs text-[#3A2A20]/50 line-through">₹{kit.mrp}</span>
-                    )}
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Link
-                      href={`/product/${kit.slug}`}
-                      className="px-3 py-2 rounded-lg bg-stone-50 hover:bg-stone-100 text-[#4A0E17] text-xs font-semibold border border-stone-200 transition-colors"
-                    >
-                      Details
-                    </Link>
-                    <button
-                      onClick={() => addToCart({
-                        id: kit.id,
-                        name: kit.name,
-                        slug: kit.slug,
-                        price: kit.price,
-                        mrp: kit.mrp,
-                        image: mainImg,
-                        quantityUnit: kit.quantityUnit,
-                      })}
-                      className="px-3 py-2 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-xs"
-                    >
-                      <ShoppingBag className="w-3.5 h-3.5" /> Add
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-            );
-          })}
+          {/* Row 2: Right to Left Marquee */}
+          <div className="relative w-full overflow-hidden py-1">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+            
+            <div className="animate-marquee-rtl flex items-stretch gap-3.5 sm:gap-6 marquee-track">
+              {[...row2Kits, ...row2Kits, ...row2Kits, ...row2Kits].map((kit, idx) =>
+                renderKitCard(kit, `kit-r2-${kit.id}-${idx}`)
+              )}
+            </div>
+          </div>
         </div>
 
       </div>

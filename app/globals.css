@@ -43,3 +43,54 @@ h1, h2, h3, h4, .font-serif {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* ==========================================
+   Smooth Infinite Horizontal Marquee Animations
+   Row 1: Left to Right
+   Row 2: Right to Left
+   ========================================== */
+@keyframes marquee-ltr {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-ltr {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-ltr 32s linear infinite;
+}
+
+.animate-marquee-rtl {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-rtl 32s linear infinite;
+}
+
+/* Pause smoothly when user hovers over a product card */
+.animate-marquee-ltr:hover,
+.animate-marquee-rtl:hover {
+  animation-play-state: paused;
+}
+
+/* Ensure smooth 60fps GPU acceleration */
+.marquee-track {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
