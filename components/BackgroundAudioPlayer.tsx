@@ -7,8 +7,9 @@ export default function BackgroundAudioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(0.10); // Subtle divine background ambient level (10% volume)
+  const [volume, setVolume] = useState(0.10); // Subtle 10% ambient volume
   const [isExpanded, setIsExpanded] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -17,54 +18,61 @@ export default function BackgroundAudioPlayer() {
     audio.volume = 0.10;
     audio.loop = true;
 
-    // Check if user previously stopped music in this session
+    // Check if user explicitly stopped music
     const userStopped = localStorage.getItem('pooja_music_stopped') === 'true';
     if (userStopped) {
       setIsPlaying(false);
       return;
     }
 
-    // Try starting audio immediately when website opens
-    const startAudio = () => {
-      if (audio && audio.paused && localStorage.getItem('pooja_music_stopped') !== 'true') {
+    // 1. Attempt direct instant playback on load
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setIsPlaying(true);
+          setHasInteracted(true);
+        })
+        .catch(() => {
+          // Autoplay blocked by browser policy without user gesture
+          setIsPlaying(false);
+        });
+    }
+
+    // 2. Global immediate capture listener on ANY user interaction
+    const unlockAndPlay = () => {
+      if (localStorage.getItem('pooja_music_stopped') === 'true') return;
+
+      if (audio.paused) {
         audio.volume = 0.10;
         audio.play()
           .then(() => {
             setIsPlaying(true);
+            setHasInteracted(true);
           })
-          .catch(() => {
-            // If browser blocks unprompted audio, listen to first gesture/touch/scroll
-            setIsPlaying(false);
-          });
-      }
-    };
-
-    startAudio();
-
-    // Secondary instant trigger for browsers with strict gesture policies
-    const handleFirstGesture = () => {
-      if (localStorage.getItem('pooja_music_stopped') !== 'true' && audio && audio.paused) {
-        audio.volume = 0.10;
-        audio.play()
-          .then(() => setIsPlaying(true))
           .catch(() => {});
+      } else {
+        setIsPlaying(true);
+        setHasInteracted(true);
       }
-      window.removeEventListener('click', handleFirstGesture);
-      window.removeEventListener('touchstart', handleFirstGesture);
-      window.removeEventListener('scroll', handleFirstGesture);
-      window.removeEventListener('pointerdown', handleFirstGesture);
+
+      cleanupListeners();
     };
 
-    window.addEventListener('click', handleFirstGesture, { once: true });
-    window.addEventListener('touchstart', handleFirstGesture, { once: true });
-    window.addEventListener('scroll', handleFirstGesture, { once: true });
-    window.addEventListener('pointerdown', handleFirstGesture, { once: true });
+    const cleanupListeners = () => {
+      ['click', 'touchstart', 'touchend', 'pointerdown', 'mousedown', 'keydown', 'scroll'].forEach(evt => {
+        window.removeEventListener(evt, unlockAndPlay, true);
+        document.removeEventListener(evt, unlockAndPlay, true);
+      });
+    };
+
+    ['click', 'touchstart', 'touchend', 'pointerdown', 'mousedown', 'keydown', 'scroll'].forEach(evt => {
+      window.addEventListener(evt, unlockAndPlay, { once: true, capture: true });
+      document.addEventListener(evt, unlockAndPlay, { once: true, capture: true });
+    });
 
     return () => {
-      window.removeEventListener('click', handleFirstGesture);
-      window.removeEventListener('touchstart', handleFirstGesture);
-      window.removeEventListener('scroll', handleFirstGesture);
-      window.removeEventListener('pointerdown', handleFirstGesture);
+      cleanupListeners();
     };
   }, []);
 
@@ -81,6 +89,7 @@ export default function BackgroundAudioPlayer() {
       audio.volume = isMuted ? 0 : volume;
       audio.play().then(() => {
         setIsPlaying(true);
+        setHasInteracted(true);
         localStorage.removeItem('pooja_music_stopped');
       }).catch(() => {});
     }
@@ -126,7 +135,7 @@ export default function BackgroundAudioPlayer() {
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
       >
-        <div className="flex items-center gap-2 bg-[#4A0E17]/95 text-white backdrop-blur-md px-3 py-2 rounded-full border border-[#D97706]/70 shadow-lg shadow-black/20 transition-all duration-300">
+        <div className={`flex items-center gap-2 bg-[#4A0E17]/95 text-white backdrop-blur-md px-3 py-2 rounded-full border border-[#D97706]/70 shadow-lg shadow-black/20 transition-all duration-300 ${!isPlaying && !hasInteracted ? 'animate-bounce' : ''}`}>
           
           {/* Play / Stop Button */}
           <button
@@ -144,7 +153,7 @@ export default function BackgroundAudioPlayer() {
 
           {/* Sound Wave Animation or Title */}
           <div 
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={togglePlay}
             className="flex items-center gap-1.5 cursor-pointer pr-1"
           >
             {isPlaying ? (
@@ -159,7 +168,7 @@ export default function BackgroundAudioPlayer() {
             )}
 
             <span className="text-[11px] sm:text-xs font-serif font-medium tracking-wide text-[#FAF6EE] hidden min-[400px]:inline whitespace-nowrap">
-              {isPlaying ? 'Divine Music' : 'Play Chant'}
+              {isPlaying ? 'Divine Chant (10%)' : 'Play Om Chant'}
             </span>
           </div>
 
@@ -185,7 +194,7 @@ export default function BackgroundAudioPlayer() {
               type="range"
               min="0"
               max="1"
-              step="0.05"
+              step="0.02"
               value={isMuted ? 0 : volume}
               onChange={handleVolumeChange}
               title={`Volume: ${Math.round(volume * 100)}%`}
