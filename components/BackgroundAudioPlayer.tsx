@@ -10,6 +10,7 @@ export default function BackgroundAudioPlayer() {
   const [volume, setVolume] = useState(0.10); // Subtle 10% ambient volume
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const isManuallyPausedRef = useRef(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -17,13 +18,6 @@ export default function BackgroundAudioPlayer() {
 
     audio.volume = 0.10;
     audio.loop = true;
-
-    // Check if user explicitly stopped music
-    const userStopped = localStorage.getItem('pooja_music_stopped') === 'true';
-    if (userStopped) {
-      setIsPlaying(false);
-      return;
-    }
 
     // 1. Attempt direct instant playback on load
     const playPromise = audio.play();
@@ -34,16 +28,17 @@ export default function BackgroundAudioPlayer() {
           setHasInteracted(true);
         })
         .catch(() => {
-          // Autoplay blocked by browser policy without user gesture
+          // If browser requires user gesture, wait for first touch / scroll / click
           setIsPlaying(false);
         });
     }
 
-    // 2. Global immediate capture listener on ANY user interaction
-    const unlockAndPlay = () => {
-      if (localStorage.getItem('pooja_music_stopped') === 'true') return;
+    // 2. Global immediate trigger on ANY user scroll or touch anywhere on the page
+    const handleUserTouchOrScroll = () => {
+      // If customer explicitly clicked STOP/PAUSE button, do NOT override customer command
+      if (isManuallyPausedRef.current) return;
 
-      if (audio.paused) {
+      if (audio && audio.paused) {
         audio.volume = 0.10;
         audio.play()
           .then(() => {
@@ -60,15 +55,15 @@ export default function BackgroundAudioPlayer() {
     };
 
     const cleanupListeners = () => {
-      ['click', 'touchstart', 'touchend', 'pointerdown', 'mousedown', 'keydown', 'scroll'].forEach(evt => {
-        window.removeEventListener(evt, unlockAndPlay, true);
-        document.removeEventListener(evt, unlockAndPlay, true);
+      ['touchstart', 'touchend', 'scroll', 'pointerdown', 'mousedown', 'click', 'wheel'].forEach(evt => {
+        window.removeEventListener(evt, handleUserTouchOrScroll, true);
+        document.removeEventListener(evt, handleUserTouchOrScroll, true);
       });
     };
 
-    ['click', 'touchstart', 'touchend', 'pointerdown', 'mousedown', 'keydown', 'scroll'].forEach(evt => {
-      window.addEventListener(evt, unlockAndPlay, { once: true, capture: true });
-      document.addEventListener(evt, unlockAndPlay, { once: true, capture: true });
+    ['touchstart', 'touchend', 'scroll', 'pointerdown', 'mousedown', 'click', 'wheel'].forEach(evt => {
+      window.addEventListener(evt, handleUserTouchOrScroll, { once: true, capture: true });
+      document.addEventListener(evt, handleUserTouchOrScroll, { once: true, capture: true });
     });
 
     return () => {
@@ -82,15 +77,17 @@ export default function BackgroundAudioPlayer() {
     if (!audio) return;
 
     if (isPlaying) {
+      // Customer command: STOP / PAUSE
       audio.pause();
       setIsPlaying(false);
-      localStorage.setItem('pooja_music_stopped', 'true');
+      isManuallyPausedRef.current = true;
     } else {
+      // Customer command: PLAY
+      isManuallyPausedRef.current = false;
       audio.volume = isMuted ? 0 : volume;
       audio.play().then(() => {
         setIsPlaying(true);
         setHasInteracted(true);
-        localStorage.removeItem('pooja_music_stopped');
       }).catch(() => {});
     }
   };
