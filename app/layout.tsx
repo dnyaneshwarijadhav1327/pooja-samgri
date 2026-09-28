@@ -8,6 +8,7 @@ import SearchModal from '@/components/SearchModal';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
 import ProductMakingVideoWidget from '@/components/ProductMakingVideoWidget';
 import FloatingPromoVideo from '@/components/FloatingPromoVideo';
+import BackgroundAudioPlayer from '@/components/BackgroundAudioPlayer';
 
 export const metadata: Metadata = {
   title: 'Pooja Sanskar - Pure Samagri. Sacred Traditions.',
@@ -32,6 +33,7 @@ export default function RootLayout({
           <Footer />
           <ProductMakingVideoWidget />
           <FloatingPromoVideo />
+          <BackgroundAudioPlayer />
           <WhatsAppWidget />
         </ShopProvider>
       </body>
