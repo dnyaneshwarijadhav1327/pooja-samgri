@@ -3,29 +3,17 @@ import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import ProductDetailClient from '@/components/ProductDetailClient';
 
-// Enable Incremental Static Regeneration (ISR) with fast 60s background revalidation
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 interface Props {
-  params: Promise<{
+  params: {
     slug: string;
-  }>;
-}
-
-export async function generateStaticParams() {
-  try {
-    const products = await prisma.product.findMany({
-      select: { slug: true },
-      take: 100,
-    });
-    return products.map((p) => ({ slug: p.slug }));
-  } catch (e) {
-    return [];
-  }
+  };
 }
 
 export default async function ProductDetailPage({ params }: Props) {
-  const { slug } = await params;
+  const slug = params.slug;
 
   try {
     const rawProduct = await prisma.product.findUnique({

@@ -3,27 +3,17 @@ import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import ShopClient from '@/components/ShopClient';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 interface Props {
-  params: Promise<{
+  params: {
     slug: string;
-  }>;
-}
-
-export async function generateStaticParams() {
-  try {
-    const categories = await prisma.category.findMany({
-      select: { slug: true },
-    });
-    return categories.map((c) => ({ slug: c.slug }));
-  } catch (e) {
-    return [];
-  }
+  };
 }
 
 export default async function CategoryPage({ params }: Props) {
-  const { slug } = await params;
+  const slug = params.slug;
 
   try {
     const category = await prisma.category.findUnique({
