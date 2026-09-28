@@ -6,8 +6,7 @@ import PujaKitSection from '@/components/PujaKitSection';
 import ProductMakingSection from '@/components/ProductMakingSection';
 import ReviewSection from '@/components/ReviewSection';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0; // Fresh updates for newly added admin products
+export const revalidate = 60; // Instant cached loading with fast background revalidation
 
 const fallbackEssentials = [
   {
@@ -85,34 +84,34 @@ export default async function HomePage() {
   let pujaKits: any[] = [];
 
   try {
-    // 1. Query ONLY Individual Essentials (Excludes Puja Kits)
-    const rawProducts = await prisma.product.findMany({
-      where: {
-        isAvailable: true,
-        NOT: {
+    // Parallel Query for Individual Essentials and Puja Kits
+    const [rawProducts, rawPujaKits] = await Promise.all([
+      prisma.product.findMany({
+        where: {
+          isAvailable: true,
+          NOT: {
+            category: { slug: 'puja-kits' },
+          },
+        },
+        take: 8,
+        orderBy: { createdAt: 'desc' },
+        include: {
+          category: true,
+          images: true,
+        },
+      }),
+      prisma.product.findMany({
+        where: {
+          isAvailable: true,
           category: { slug: 'puja-kits' },
         },
-      },
-      take: 8,
-      orderBy: { createdAt: 'desc' },
-      include: {
-        category: true,
-        images: true,
-      },
-    });
-
-    // 2. Query ONLY Puja Kits for the dedicated Puja Kit section
-    const rawPujaKits = await prisma.product.findMany({
-      where: {
-        isAvailable: true,
-        category: { slug: 'puja-kits' },
-      },
-      orderBy: { createdAt: 'desc' },
-      include: {
-        category: true,
-        images: true,
-      },
-    });
+        orderBy: { createdAt: 'desc' },
+        include: {
+          category: true,
+          images: true,
+        },
+      }),
+    ]);
 
     if (rawProducts && rawProducts.length > 0) {
       products = rawProducts.map((p) => ({

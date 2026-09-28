@@ -117,6 +117,7 @@ export default function FloatingPromoVideo() {
             muted={isMuted}
             loop
             playsInline
+            preload="metadata"
             onError={handleVideoError}
             className="w-full h-full object-cover select-none"
           />
