@@ -19,22 +19,8 @@ export default function BackgroundAudioPlayer() {
     audio.volume = 0.10;
     audio.loop = true;
 
-    // 1. Attempt direct instant playback on load
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          setIsPlaying(true);
-          setHasInteracted(true);
-        })
-        .catch(() => {
-          // If browser requires user gesture, wait for first touch / scroll / click
-          setIsPlaying(false);
-        });
-    }
-
-    // 2. Global immediate trigger on ANY user scroll or touch anywhere on the page
-    const handleUserTouchOrScroll = () => {
+    // Trigger playback ONLY when customer scrolls the page
+    const handleScrollToPlay = () => {
       // If customer explicitly clicked STOP/PAUSE button, do NOT override customer command
       if (isManuallyPausedRef.current) return;
 
@@ -46,28 +32,23 @@ export default function BackgroundAudioPlayer() {
             setHasInteracted(true);
           })
           .catch(() => {});
-      } else {
-        setIsPlaying(true);
-        setHasInteracted(true);
       }
 
-      cleanupListeners();
+      cleanupScrollListeners();
     };
 
-    const cleanupListeners = () => {
-      ['touchstart', 'touchend', 'scroll', 'pointerdown', 'mousedown', 'click', 'wheel'].forEach(evt => {
-        window.removeEventListener(evt, handleUserTouchOrScroll, true);
-        document.removeEventListener(evt, handleUserTouchOrScroll, true);
-      });
+    const cleanupScrollListeners = () => {
+      window.removeEventListener('scroll', handleScrollToPlay, true);
+      window.removeEventListener('wheel', handleScrollToPlay, true);
+      document.removeEventListener('scroll', handleScrollToPlay, true);
     };
 
-    ['touchstart', 'touchend', 'scroll', 'pointerdown', 'mousedown', 'click', 'wheel'].forEach(evt => {
-      window.addEventListener(evt, handleUserTouchOrScroll, { once: true, capture: true });
-      document.addEventListener(evt, handleUserTouchOrScroll, { once: true, capture: true });
-    });
+    window.addEventListener('scroll', handleScrollToPlay, { once: true, passive: true, capture: true });
+    window.addEventListener('wheel', handleScrollToPlay, { once: true, passive: true, capture: true });
+    document.addEventListener('scroll', handleScrollToPlay, { once: true, passive: true, capture: true });
 
     return () => {
-      cleanupListeners();
+      cleanupScrollListeners();
     };
   }, []);
 
