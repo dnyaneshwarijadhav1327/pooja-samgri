@@ -7,63 +7,64 @@ export default function BackgroundAudioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(0.25); // Soft divine silent background mode (25% volume)
+  const [volume, setVolume] = useState(0.10); // Subtle divine background ambient level (10% volume)
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    audio.volume = volume;
+    audio.volume = 0.10;
     audio.loop = true;
 
-    // Check if user previously stopped music
+    // Check if user previously stopped music in this session
     const userStopped = localStorage.getItem('pooja_music_stopped') === 'true';
     if (userStopped) {
       setIsPlaying(false);
       return;
     }
 
-    // Try starting audio
-    const attemptPlay = () => {
-      if (audio.paused) {
-        audio.volume = volume;
+    // Try starting audio immediately when website opens
+    const startAudio = () => {
+      if (audio && audio.paused && localStorage.getItem('pooja_music_stopped') !== 'true') {
+        audio.volume = 0.10;
         audio.play()
           .then(() => {
             setIsPlaying(true);
           })
           .catch(() => {
-            // Autoplay blocked by browser policy until first customer interaction
+            // If browser blocks unprompted audio, listen to first gesture/touch/scroll
             setIsPlaying(false);
           });
       }
     };
 
-    attemptPlay();
+    startAudio();
 
-    // Attach one-time gentle start on first user interaction anywhere on the website
-    const handleFirstInteraction = () => {
-      if (localStorage.getItem('pooja_music_stopped') !== 'true') {
-        if (audio.paused) {
-          audio.volume = volume;
-          audio.play()
-            .then(() => setIsPlaying(true))
-            .catch(() => {});
-        }
+    // Secondary instant trigger for browsers with strict gesture policies
+    const handleFirstGesture = () => {
+      if (localStorage.getItem('pooja_music_stopped') !== 'true' && audio && audio.paused) {
+        audio.volume = 0.10;
+        audio.play()
+          .then(() => setIsPlaying(true))
+          .catch(() => {});
       }
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('keydown', handleFirstInteraction);
+      window.removeEventListener('click', handleFirstGesture);
+      window.removeEventListener('touchstart', handleFirstGesture);
+      window.removeEventListener('scroll', handleFirstGesture);
+      window.removeEventListener('pointerdown', handleFirstGesture);
     };
 
-    window.addEventListener('click', handleFirstInteraction, { once: true });
-    window.addEventListener('touchstart', handleFirstInteraction, { once: true });
-    window.addEventListener('keydown', handleFirstInteraction, { once: true });
+    window.addEventListener('click', handleFirstGesture, { once: true });
+    window.addEventListener('touchstart', handleFirstGesture, { once: true });
+    window.addEventListener('scroll', handleFirstGesture, { once: true });
+    window.addEventListener('pointerdown', handleFirstGesture, { once: true });
 
     return () => {
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('keydown', handleFirstInteraction);
+      window.removeEventListener('click', handleFirstGesture);
+      window.removeEventListener('touchstart', handleFirstGesture);
+      window.removeEventListener('scroll', handleFirstGesture);
+      window.removeEventListener('pointerdown', handleFirstGesture);
     };
   }, []);
 
