@@ -6,7 +6,8 @@ import PujaKitSection from '@/components/PujaKitSection';
 import ProductMakingSection from '@/components/ProductMakingSection';
 import ReviewSection from '@/components/ReviewSection';
 
-export const revalidate = 60; // Instant cached loading with fast background revalidation
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const fallbackEssentials = [
   {
