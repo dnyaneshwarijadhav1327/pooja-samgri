@@ -187,12 +187,12 @@ export default function PujaKitSection({ kits = [] }: Props) {
           </p>
         </div>
 
-        {/* Single Row Smooth Horizontal Infinite Marquee */}
+        {/* Single Row Smooth Horizontal Infinite Marquee (Left to Right) */}
         <div className="relative w-full overflow-hidden py-2">
           <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
           
-          <div className="animate-marquee-rtl flex items-stretch gap-4 sm:gap-6 marquee-track">
+          <div className="animate-marquee-ltr flex items-stretch gap-4 sm:gap-6 marquee-track">
             {marqueeKits.map((kit, idx) =>
               renderKitCard(kit, `kit-single-${kit.id}-${idx}`)
             )}
