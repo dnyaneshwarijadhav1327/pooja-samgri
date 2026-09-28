@@ -97,7 +97,7 @@ export default function PujaKitSection({ kits = [] }: Props) {
       >
         <div>
           {/* Kit Image Frame */}
-          <Link href={`/product/${kit.slug}`} className="block">
+          <Link href={`/product/${kit.slug}`} prefetch={true} className="block">
             <div className="relative h-36 sm:h-48 rounded-lg sm:rounded-xl overflow-hidden mb-3 sm:mb-4 border border-stone-100 bg-stone-50">
               <img
                 src={mainImg}
@@ -131,6 +131,7 @@ export default function PujaKitSection({ kits = [] }: Props) {
           <div className="flex items-center gap-2">
             <Link
               href={`/product/${kit.slug}`}
+              prefetch={true}
               className="px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-stone-50 hover:bg-stone-100 text-[#4A0E17] text-xs font-semibold border border-stone-200 transition-colors"
             >
               Details

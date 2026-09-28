@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Star, ShoppingBag, Heart, Eye } from 'lucide-react';
 import { useShop } from '@/context/ShopContext';
 import { QuickViewProduct } from './QuickViewModal';
@@ -51,11 +52,26 @@ export default function ProductCard({ product, onQuickView }: Props) {
     onQuickView(product);
   };
 
+  const router = useRouter();
+
+  const handlePrefetch = () => {
+    try {
+      router.prefetch(`/product/${product.slug}`);
+    } catch (e) {}
+  };
+
   return (
-    <div className="group relative bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 flex flex-col justify-between h-full">
-      
+    <div 
+      onMouseEnter={handlePrefetch}
+      onTouchStart={handlePrefetch}
+      className="group relative bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 flex flex-col justify-between h-full"
+    >
       {/* Clickable Product Card Link Wrapper */}
-      <Link href={`/product/${product.slug}`} className="block flex-1 p-2 sm:p-4">
+      <Link 
+        href={`/product/${product.slug}`} 
+        prefetch={true}
+        className="block flex-1 p-2 sm:p-4"
+      >
         
         {/* Product Image Area */}
         <div className="relative w-full h-36 sm:h-52 rounded-lg sm:rounded-xl bg-stone-50 overflow-hidden mb-2 sm:mb-3 border border-stone-100">
