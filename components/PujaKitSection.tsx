@@ -83,9 +83,9 @@ export default function PujaKitSection({ kits = [] }: Props) {
   ];
 
   const displayKits = kits.length > 0 ? kits : fallbackKits;
-  const half = Math.ceil(displayKits.length / 2);
-  const row1Kits = displayKits.slice(0, half);
-  const row2Kits = displayKits.slice(half).length > 0 ? displayKits.slice(half) : row1Kits;
+  // If displayKits has enough items, duplicate once or twice for seamless infinite marquee loop
+  const loopCount = displayKits.length < 4 ? 3 : 2;
+  const marqueeKits = Array(loopCount).fill(displayKits).flat();
 
   const renderKitCard = (kit: any, uniqueKey: string) => {
     const mainImg = kit.images?.[0]?.url || 'https://images.unsplash.com/photo-1574043864009-847d0f98fb91?auto=format&fit=crop&q=80&w=800';
@@ -175,7 +175,7 @@ export default function PujaKitSection({ kits = [] }: Props) {
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-12 space-y-1 sm:space-y-2">
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10 space-y-1 sm:space-y-2">
           <span className="text-[10px] sm:text-xs font-serif uppercase tracking-widest text-[#D97706] font-semibold">
             All-In-One Sacred Ready Solutions
           </span>
@@ -187,30 +187,15 @@ export default function PujaKitSection({ kits = [] }: Props) {
           </p>
         </div>
 
-        {/* Multi-Row Alternating Horizontal Marquee Animation */}
-        <div className="space-y-4 sm:space-y-6">
-          {/* Row 1: Left to Right Marquee */}
-          <div className="relative w-full overflow-hidden py-1">
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
-            
-            <div className="animate-marquee-ltr flex items-stretch gap-3.5 sm:gap-6 marquee-track">
-              {[...row1Kits, ...row1Kits, ...row1Kits, ...row1Kits].map((kit, idx) =>
-                renderKitCard(kit, `kit-r1-${kit.id}-${idx}`)
-              )}
-            </div>
-          </div>
-
-          {/* Row 2: Right to Left Marquee */}
-          <div className="relative w-full overflow-hidden py-1">
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
-            
-            <div className="animate-marquee-rtl flex items-stretch gap-3.5 sm:gap-6 marquee-track">
-              {[...row2Kits, ...row2Kits, ...row2Kits, ...row2Kits].map((kit, idx) =>
-                renderKitCard(kit, `kit-r2-${kit.id}-${idx}`)
-              )}
-            </div>
+        {/* Single Row Smooth Horizontal Infinite Marquee */}
+        <div className="relative w-full overflow-hidden py-2">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+          
+          <div className="animate-marquee-rtl flex items-stretch gap-4 sm:gap-6 marquee-track">
+            {marqueeKits.map((kit, idx) =>
+              renderKitCard(kit, `kit-single-${kit.id}-${idx}`)
+            )}
           </div>
         </div>
 
