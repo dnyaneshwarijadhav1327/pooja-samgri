@@ -41,7 +41,7 @@ const config: Config = {
       },
       fontFamily: {
         serif: ["Cinzel", "Georgia", "Cambria", "Times New Roman", "serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Cinzel", "Georgia", "Cambria", "Times New Roman", "serif"],
       },
       boxShadow: {
         soft: "0 4px 20px -2px rgba(74, 14, 23, 0.05)",
