@@ -2,6 +2,7 @@ import React from 'react';
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import ProductDetailClient from '@/components/ProductDetailClient';
+import { getShopifyProductByHandle } from '@/lib/shopify';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -16,6 +17,20 @@ export default async function ProductDetailPage({ params }: Props) {
   const slug = params.slug;
 
   try {
+    // 1. Try Shopify Product by Handle
+    const shopifyProduct = await getShopifyProductByHandle(slug);
+    if (shopifyProduct) {
+      return (
+        <ProductDetailClient
+          product={{
+            ...shopifyProduct,
+            reviewsList: [],
+          }}
+          relatedProducts={[]}
+        />
+      );
+    }
+
     const rawProduct = await prisma.product.findUnique({
       where: { slug },
       include: {

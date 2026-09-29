@@ -80,57 +80,68 @@ const fallbackEssentials = [
   }
 ];
 
+import { getShopifyProducts } from '@/lib/shopify';
+
 export default async function HomePage() {
   let products: any[] = fallbackEssentials;
   let pujaKits: any[] = [];
 
   try {
-    // Parallel Query for Individual Essentials and Puja Kits
-    const [rawProducts, rawPujaKits] = await Promise.all([
-      prisma.product.findMany({
-        where: {
-          isAvailable: true,
-          NOT: {
+    // 1. First try fetching live products from Shopify
+    const shopifyItems = await getShopifyProducts(24);
+    if (shopifyItems && shopifyItems.length > 0) {
+      products = shopifyItems.filter((p: any) => p.category?.name?.toLowerCase() !== 'puja kits' && p.category?.name?.toLowerCase() !== 'puja-kits');
+      pujaKits = shopifyItems.filter((p: any) => p.category?.name?.toLowerCase() === 'puja kits' || p.category?.name?.toLowerCase() === 'puja-kits');
+    }
+
+    // 2. Fallback to Supabase / Database if Shopify is empty
+    if (products.length === 0 || products === fallbackEssentials) {
+      const [rawProducts, rawPujaKits] = await Promise.all([
+        prisma.product.findMany({
+          where: {
+            isAvailable: true,
+            NOT: {
+              category: { slug: 'puja-kits' },
+            },
+          },
+          take: 8,
+          orderBy: { createdAt: 'desc' },
+          include: {
+            category: true,
+            images: true,
+          },
+        }),
+        prisma.product.findMany({
+          where: {
+            isAvailable: true,
             category: { slug: 'puja-kits' },
           },
-        },
-        take: 8,
-        orderBy: { createdAt: 'desc' },
-        include: {
-          category: true,
-          images: true,
-        },
-      }),
-      prisma.product.findMany({
-        where: {
-          isAvailable: true,
-          category: { slug: 'puja-kits' },
-        },
-        orderBy: { createdAt: 'desc' },
-        include: {
-          category: true,
-          images: true,
-        },
-      }),
-    ]);
+          orderBy: { createdAt: 'desc' },
+          include: {
+            category: true,
+            images: true,
+          },
+        }),
+      ]);
 
-    if (rawProducts && rawProducts.length > 0) {
-      products = rawProducts.map((p) => ({
-        ...p,
-        category: { name: p.category.name },
-        images: p.images.map((img) => ({ url: img.url })),
-      }));
-    }
+      if (rawProducts && rawProducts.length > 0) {
+        products = rawProducts.map((p) => ({
+          ...p,
+          category: { name: p.category.name },
+          images: p.images.map((img) => ({ url: img.url })),
+        }));
+      }
 
-    if (rawPujaKits && rawPujaKits.length > 0) {
-      pujaKits = rawPujaKits.map((p) => ({
-        ...p,
-        category: { name: p.category.name },
-        images: p.images.map((img) => ({ url: img.url })),
-      }));
+      if (rawPujaKits && rawPujaKits.length > 0) {
+        pujaKits = rawPujaKits.map((p) => ({
+          ...p,
+          category: { name: p.category.name },
+          images: p.images.map((img) => ({ url: img.url })),
+        }));
+      }
     }
   } catch (error) {
-    console.error('Database connection error in HomePage, loading fallback data:', error);
+    console.error('Database/Shopify fetch in HomePage:', error);
   }
 
   return (
