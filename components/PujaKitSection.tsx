@@ -93,7 +93,7 @@ export default function PujaKitSection({ kits = [] }: Props) {
     return (
       <div
         key={uniqueKey}
-        className="w-[230px] min-[480px]:w-[270px] sm:w-[300px] lg:w-[320px] shrink-0 flex flex-col bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 p-3.5 sm:p-5 shadow-xs hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 justify-between group h-full"
+        className="w-[180px] min-[480px]:w-[240px] sm:w-[300px] lg:w-[320px] shrink-0 flex flex-col bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 p-3 sm:p-5 shadow-xs hover:shadow-xl hover:border-[#D97706]/60 transition-all duration-300 justify-between group h-full"
       >
         <div>
           {/* Kit Image Frame */}

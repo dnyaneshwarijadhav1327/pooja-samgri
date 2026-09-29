@@ -61,11 +61,11 @@ export default function FeaturedProducts({ products }: Props) {
             <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
             
-            <div className="animate-marquee-ltr flex items-stretch gap-3.5 sm:gap-6 marquee-track">
+            <div className="animate-marquee-ltr flex items-stretch gap-2.5 sm:gap-6 marquee-track">
               {[...row1, ...row1, ...row1, ...row1].map((product, idx) => (
                 <div
                   key={`feat-r1-${product.id}-${idx}`}
-                  className="w-[200px] min-[480px]:w-[230px] sm:w-[260px] lg:w-[280px] shrink-0 flex flex-col"
+                  className="w-[160px] min-[480px]:w-[200px] sm:w-[260px] lg:w-[280px] shrink-0 flex flex-col"
                 >
                   <ProductCard
                     product={product}
@@ -81,11 +81,11 @@ export default function FeaturedProducts({ products }: Props) {
             <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
             
-            <div className="animate-marquee-rtl flex items-stretch gap-3.5 sm:gap-6 marquee-track">
+            <div className="animate-marquee-rtl flex items-stretch gap-2.5 sm:gap-6 marquee-track">
               {[...row2, ...row2, ...row2, ...row2].map((product, idx) => (
                 <div
                   key={`feat-r2-${product.id}-${idx}`}
-                  className="w-[200px] min-[480px]:w-[230px] sm:w-[260px] lg:w-[280px] shrink-0 flex flex-col"
+                  className="w-[160px] min-[480px]:w-[200px] sm:w-[260px] lg:w-[280px] shrink-0 flex flex-col"
                 >
                   <ProductCard
                     product={product}
