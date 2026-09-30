@@ -86,20 +86,20 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
   };
 
   return (
-    <div className="bg-[#FAF6EE] min-h-screen py-8">
+    <div className="bg-[#FAF6EE] min-h-screen py-8 text-black font-['Times_New_Roman',_Times,_serif]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-xs text-[#3A2A20]/70 mb-6">
-          <Link href="/" className="hover:text-[#D97706] transition-colors">
+        <nav className="flex items-center gap-2 text-xs text-black/80 mb-6 font-['Times_New_Roman',_Times,_serif]">
+          <Link href="/" className="hover:text-black hover:underline transition-colors font-medium">
             Home
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-[#3A2A20]/40" />
-          <Link href="/shop" className="hover:text-[#D97706] transition-colors">
+          <ChevronRight className="w-3.5 h-3.5 text-black/60" />
+          <Link href="/shop" className="hover:text-black hover:underline transition-colors font-medium">
             Shop
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-[#3A2A20]/40" />
-          <span className="font-semibold text-[#4A0E17] line-clamp-1">{product.name}</span>
+          <ChevronRight className="w-3.5 h-3.5 text-black/60" />
+          <span className="font-bold text-black line-clamp-1">{product.name}</span>
         </nav>
 
         {/* Main Product Layout */}
@@ -154,12 +154,12 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
               </div>
 
               {/* Title */}
-              <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#4A0E17] leading-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold text-black leading-tight font-['Times_New_Roman',_Times,_serif]">
                 {product.name}
               </h1>
 
               {/* Rating Summary */}
-              <div className="flex items-center gap-3 text-xs">
+              <div className="flex items-center gap-3 text-xs font-['Times_New_Roman',_Times,_serif]">
                 <div className="flex items-center text-[#D97706]">
                   {[...Array(5)].map((_, i) => (
                     <Star
@@ -167,46 +167,46 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
                       className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-current' : 'text-stone-300'}`}
                     />
                   ))}
-                  <span className="font-bold ml-1.5 text-[#4A0E17]">{product.rating}</span>
+                  <span className="font-bold ml-1.5 text-black">{product.rating}</span>
                 </div>
-                <span className="text-[#3A2A20]/40">|</span>
-                <span className="text-[#3A2A20]/70 font-medium">
+                <span className="text-black/40">|</span>
+                <span className="text-black/80 font-medium">
                   {reviewsList.length} Devotee Reviews
                 </span>
               </div>
 
               {/* Price & Quantity Sizing */}
-              <div className="flex items-baseline gap-3 pt-2">
-                <span className="text-3xl font-bold text-[#4A0E17]">₹{product.price}</span>
+              <div className="flex items-baseline gap-3 pt-2 font-['Times_New_Roman',_Times,_serif]">
+                <span className="text-3xl font-bold text-black">₹{product.price}</span>
                 {product.mrp > product.price && (
-                  <span className="text-base text-[#3A2A20]/50 line-through">₹{product.mrp}</span>
+                  <span className="text-base text-black/50 line-through">₹{product.mrp}</span>
                 )}
-                <span className="text-xs text-[#D97706] font-semibold">
+                <span className="text-xs text-black/80 font-semibold">
                   (Includes all taxes / {product.quantityUnit})
                 </span>
               </div>
 
               {/* Short Description */}
-              <p className="text-xs sm:text-sm text-[#3A2A20]/80 leading-relaxed border-t border-[#E4D9C5] pt-3">
+              <p className="text-xs sm:text-sm text-black/80 leading-relaxed border-t border-[#E4D9C5] pt-3 font-['Times_New_Roman',_Times,_serif]">
                 {product.shortDesc}
               </p>
 
               {/* Quantity Selector */}
-              <div className="flex items-center gap-4 pt-2">
-                <span className="text-xs font-serif font-bold text-[#4A0E17]">Quantity:</span>
+              <div className="flex items-center gap-4 pt-2 font-['Times_New_Roman',_Times,_serif]">
+                <span className="text-xs font-bold text-black">Quantity:</span>
                 <div className="flex items-center rounded-xl border border-[#E4D9C5] bg-[#FAF6EE]">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="p-2 text-[#4A0E17] hover:text-[#D97706] transition-colors"
+                    className="p-2 text-black hover:text-black/60 transition-colors"
                   >
                     <Minus className="w-4 h-4" />
                   </button>
-                  <span className="px-4 text-sm font-bold text-[#4A0E17]">
+                  <span className="px-4 text-sm font-bold text-black">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="p-2 text-[#4A0E17] hover:text-[#D97706] transition-colors"
+                    className="p-2 text-black hover:text-black/60 transition-colors"
                   >
                     <Plus className="w-4 h-4" />
                   </button>
@@ -216,17 +216,17 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
             </div>
 
             {/* Action Buttons */}
-            <div className="space-y-3 pt-4 border-t border-[#E4D9C5]">
+            <div className="space-y-3 pt-4 border-t border-[#E4D9C5] font-['Times_New_Roman',_Times,_serif]">
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={handleAddToCart}
-                  className="flex-1 py-3.5 px-6 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all"
+                  className="flex-1 py-3.5 px-6 rounded-xl bg-black hover:bg-black/80 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all font-['Times_New_Roman',_Times,_serif]"
                 >
                   <ShoppingBag className="w-4 h-4" /> Add to Cart
                 </button>
                 <button
                   onClick={handleBuyNow}
-                  className="flex-1 py-3.5 px-6 rounded-xl bg-[#4A0E17] hover:bg-[#380B12] text-white text-xs font-serif font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all"
+                  className="flex-1 py-3.5 px-6 rounded-xl bg-black hover:bg-black/80 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all font-['Times_New_Roman',_Times,_serif]"
                 >
                   ⚡ Buy Now
                 </button>

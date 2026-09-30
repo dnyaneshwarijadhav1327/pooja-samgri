@@ -3,25 +3,25 @@ import { ShieldCheck, Flame, Heart, Award } from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#FAF6EE] min-h-screen py-12">
+    <div className="bg-[#FAF6EE] min-h-screen py-12 text-black font-['Times_New_Roman',_Times,_serif]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Banner */}
-        <div className="text-center space-y-3">
-          <span className="text-xs font-serif uppercase tracking-widest text-[#D97706] font-semibold">
+        <div className="text-center space-y-3 font-['Times_New_Roman',_Times,_serif]">
+          <span className="text-xs uppercase tracking-widest text-black/70 font-bold">
             Our Devotional Journey
           </span>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#4A0E17]">
+          <h1 className="text-3xl sm:text-4xl font-bold text-black">
             Tradition, Purity & Devotion
           </h1>
-          <p className="text-sm text-[#3A2A20]/80 max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm text-black/80 max-w-xl mx-auto leading-relaxed">
             Bringing authentic, unadulterated pooja samagri directly to your home with complete sanctity and respect for sacred traditions.
           </p>
         </div>
 
         {/* Story Section */}
-        <div className="bg-[#F5EFE4] rounded-3xl border border-[#E4D9C5] p-8 shadow-card space-y-4 text-xs sm:text-sm text-[#3A2A20]/85 leading-relaxed">
-          <h2 className="text-xl font-serif font-bold text-[#4A0E17]">
+        <div className="bg-[#F5EFE4] rounded-3xl border border-[#E4D9C5] p-8 shadow-card space-y-4 text-xs sm:text-sm text-black/90 leading-relaxed font-['Times_New_Roman',_Times,_serif]">
+          <h2 className="text-xl font-bold text-black">
             Preserving Indian Spiritual Heritage
           </h2>
           <p>
@@ -33,23 +33,23 @@ export default function AboutPage() {
         </div>
 
         {/* Core Pillars */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-['Times_New_Roman',_Times,_serif]">
           <div className="p-6 bg-[#F5EFE4] rounded-2xl border border-[#E4D9C5] text-center space-y-2">
-            <Flame className="w-8 h-8 text-[#D97706] mx-auto" />
-            <h3 className="font-serif font-bold text-[#4A0E17] text-base">Uncompromising Purity</h3>
-            <p className="text-xs text-[#3A2A20]/75">No artificial synthetic perfumes or cheap chemical fillers.</p>
+            <Flame className="w-8 h-8 text-black mx-auto" />
+            <h3 className="font-bold text-black text-base">Uncompromising Purity</h3>
+            <p className="text-xs text-black/80">No artificial synthetic perfumes or cheap chemical fillers.</p>
           </div>
 
           <div className="p-6 bg-[#F5EFE4] rounded-2xl border border-[#E4D9C5] text-center space-y-2">
-            <ShieldCheck className="w-8 h-8 text-[#D97706] mx-auto" />
-            <h3 className="font-serif font-bold text-[#4A0E17] text-base">Authentic Sourcing</h3>
-            <p className="text-xs text-[#3A2A20]/75">Direct partnership with indigenous Desi cow farms & traditional herb collectors.</p>
+            <ShieldCheck className="w-8 h-8 text-black mx-auto" />
+            <h3 className="font-bold text-black text-base">Authentic Sourcing</h3>
+            <p className="text-xs text-black/80">Direct partnership with indigenous Desi cow farms & traditional herb collectors.</p>
           </div>
 
           <div className="p-6 bg-[#F5EFE4] rounded-2xl border border-[#E4D9C5] text-center space-y-2">
-            <Heart className="w-8 h-8 text-[#D97706] mx-auto" />
-            <h3 className="font-serif font-bold text-[#4A0E17] text-base">Packed with Reverence</h3>
-            <p className="text-xs text-[#3A2A20]/75">Every order is sealed securely to arrive at your altar in pristine condition.</p>
+            <Heart className="w-8 h-8 text-black mx-auto" />
+            <h3 className="font-bold text-black text-base">Packed with Reverence</h3>
+            <p className="text-xs text-black/80">Every order is sealed securely to arrive at your altar in pristine condition.</p>
           </div>
         </div>
 
