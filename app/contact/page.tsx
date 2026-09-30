@@ -26,8 +26,8 @@ export default function ContactPage() {
             <Phone className="w-6 h-6 text-[#D97706] mx-auto" />
             <h3 className="font-bold text-[#4A0E17] text-sm">Phone Support</h3>
             <p className="text-[#3A2A20]">Mon - Sat: 9:00 AM - 7:00 PM</p>
-            <a href="tel:+919876543210" className="font-bold text-[#D97706] text-sm hover:underline block">
-              +91 98765 43210
+            <a href="tel:+918624061327" className="font-bold text-[#D97706] text-sm hover:underline block">
+              +91 86240 61327
             </a>
           </div>
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
             <h3 className="font-bold text-[#4A0E17] text-sm">WhatsApp Help</h3>
             <p className="text-[#3A2A20]">Instant messaging chat support</p>
             <a
-              href="https://wa.me/919876543210?text=Hello,%20I%20need%20help%20regarding%20pooja%20products."
+              href="https://wa.me/918624061327?text=Hello,%20I%20need%20help%20regarding%20pooja%20products."
               target="_blank"
               rel="noreferrer"
               className="font-bold text-emerald-700 text-sm hover:underline block"

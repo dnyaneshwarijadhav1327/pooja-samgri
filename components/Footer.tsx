@@ -134,8 +134,8 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-[#D97706] shrink-0 mt-0.5" />
                 <div>
                   <span className="block text-[10px] text-[#FAF6EE]/50 uppercase">Helpline</span>
-                  <a href="tel:+919876543210" className="font-semibold hover:text-[#D97706]">
-                    +91 98765 43210
+                  <a href="tel:+918624061327" className="font-semibold hover:text-[#D97706]">
+                    +91 86240 61327
                   </a>
                 </div>
               </div>

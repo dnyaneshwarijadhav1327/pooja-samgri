@@ -4,7 +4,7 @@ import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
 export default function WhatsAppWidget() {
-  const phoneNumber = '919876543210';
+  const phoneNumber = '918624061327';
   const defaultMessage = 'Hello, I need help regarding your pooja products.';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
 
