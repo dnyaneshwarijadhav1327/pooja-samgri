@@ -18,8 +18,8 @@ export default function FeaturedProducts({ products }: Props) {
   const row2 = allItems.length > 0 ? (allItems.slice(half).length > 0 ? allItems.slice(half) : row1) : [];
 
   return (
-    <section className="py-8 sm:py-12 bg-white relative overflow-hidden border-b border-stone-200/80">
-      {/* Background Decorative Saffron Flower Motifs - Responsive & Crisp */}
+    <section className="py-4 sm:py-6 bg-white relative overflow-hidden border-b border-stone-200/80">
+      {/* Background Decorative Saffron Flower Motifs */}
       <img
         src="/images/saffron_flower.png"
         alt=""
@@ -35,27 +35,18 @@ export default function FeaturedProducts({ products }: Props) {
 
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-row items-end justify-between gap-2 mb-5 sm:mb-8 pb-3 border-b border-stone-200">
-          <div>
-            <span className="text-[10px] sm:text-xs font-serif uppercase tracking-widest text-[#D97706] font-semibold block mb-0.5 sm:mb-1">
-              Handpicked Purity & Devotion
-            </span>
-            <h2 className="text-xl sm:text-3xl font-serif font-bold text-[#4A0E17]">
-              Our Sacred Essentials
-            </h2>
-          </div>
-
+        {/* Section Actions Bar */}
+        <div className="flex flex-row items-center justify-end mb-3 sm:mb-4">
           <Link
             href="/shop"
-            className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white hover:bg-[#D97706] hover:text-white text-[#4A0E17] text-[11px] sm:text-xs font-bold border border-stone-200 transition-all shadow-xs shrink-0"
+            className="px-3 sm:px-5 py-1.5 sm:py-2 rounded-xl bg-white hover:bg-black hover:text-white text-black text-[11px] sm:text-xs font-bold border border-stone-200 transition-all shadow-xs shrink-0"
           >
             Explore All ➔
           </Link>
         </div>
 
         {/* Multi-Row Alternating Horizontal Marquee Animation */}
-        <div className="space-y-4 sm:space-y-6">
+        <div className="space-y-3 sm:space-y-4">
           {/* Row 1: Left to Right Marquee */}
           <div className="relative w-full overflow-hidden py-1">
             <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />

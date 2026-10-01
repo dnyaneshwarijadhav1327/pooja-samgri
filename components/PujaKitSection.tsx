@@ -157,8 +157,8 @@ export default function PujaKitSection({ kits = [] }: Props) {
   };
 
   return (
-    <section className="py-10 sm:py-16 bg-white relative overflow-hidden border-b border-stone-200/80">
-      {/* Background Decorative Hibiscus Flower Motifs - Responsive & Crisp */}
+    <section className="py-4 sm:py-6 bg-white relative overflow-hidden border-b border-stone-200/80">
+      {/* Background Decorative Hibiscus Flower Motifs */}
       <img
         src="/images/hibiscus_flower.png"
         alt=""
@@ -175,20 +175,14 @@ export default function PujaKitSection({ kits = [] }: Props) {
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10 space-y-1 sm:space-y-2">
-          <span className="text-[10px] sm:text-xs font-serif uppercase tracking-widest text-[#D97706] font-semibold">
-            All-In-One Sacred Ready Solutions
-          </span>
+        <div className="text-center max-w-2xl mx-auto mb-3 sm:mb-4">
           <h2 className="text-xl sm:text-3xl font-serif font-bold text-[#4A0E17]">
             Complete Puja Kits
           </h2>
-          <p className="text-[11px] sm:text-sm text-[#3A2A20]/80 px-2">
-            Carefully curated ready-to-use ritual boxes containing all authentic samagri required for your prayers and Yagnas.
-          </p>
         </div>
 
-        {/* Single Row Smooth Horizontal Infinite Marquee (Left to Right) */}
-        <div className="relative w-full overflow-hidden py-2">
+        {/* Single Row Smooth Horizontal Infinite Marquee */}
+        <div className="relative w-full overflow-hidden py-1">
           <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
           

@@ -106,7 +106,7 @@ export default function ProductMakingSection() {
   const row2Videos = videos.slice(half).length > 0 ? videos.slice(half) : row1Videos;
 
   return (
-    <section className="py-12 sm:py-16 bg-[#FAF6EE] relative overflow-hidden border-b border-stone-200/80">
+    <section className="py-6 sm:py-8 bg-[#FAF6EE] relative overflow-hidden border-b border-stone-200/80">
       
       {/* Background Decorative Yellow Hibiscus Flower Motifs - Responsive & Crisp */}
       <img
@@ -129,7 +129,7 @@ export default function ProductMakingSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-2">
+        <div className="text-center max-w-2xl mx-auto mb-4 sm:mb-6 space-y-1.5">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-[#D97706]/30 text-[#D97706] text-[10px] sm:text-xs font-bold uppercase tracking-widest shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#D97706]" />
             <span>Behind The Scenes</span>
@@ -138,10 +138,6 @@ export default function ProductMakingSection() {
           <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#4A0E17] leading-tight">
             How Our Sacred Products Are Made
           </h2>
-
-          <p className="text-xs sm:text-sm text-[#3A2A20]/80 max-w-xl mx-auto">
-            Watch the authentic Vedic handcrafting and hygienic preparation processes behind our pure pooja samagri essentials.
-          </p>
         </div>
 
         {/* Multi-Row Alternating Horizontal Marquee Animation */}

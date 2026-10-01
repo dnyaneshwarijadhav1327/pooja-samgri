@@ -11,17 +11,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-xs">
-      
-      {/* Top Announcement Bar */}
-      <div className="bg-[#4A0E17] text-[#FAF6EE] text-[11px] sm:text-xs py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2">
-        <Flame className="w-3.5 h-3.5 text-[#D97706] animate-pulse" />
-        <span>Pure & Authentic Pooja Samagri | Delivered to Your Doorstep</span>
-        <Flame className="w-3.5 h-3.5 text-[#D97706] animate-pulse" />
-      </div>
-
       {/* Main Header Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Mobile Menu Hamburger Toggle */}
           <button

@@ -32,20 +32,17 @@ export default function ReviewSection() {
   ];
 
   return (
-    <section className="py-16 bg-white border-b border-stone-200/80">
+    <section className="py-6 sm:py-8 bg-white border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
+        <div className="text-center max-w-xl mx-auto mb-6 space-y-1.5">
           <span className="text-xs font-serif uppercase tracking-widest text-[#D97706] font-semibold">
             Devotee Experiences
           </span>
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#4A0E17]">
             Trusted by Thousands of Homes
           </h2>
-          <p className="text-xs sm:text-sm text-[#3A2A20]/80">
-            Real feedback from families who rely on Pooja Sanskar for their daily worship and sacred occasions.
-          </p>
         </div>
 
         {/* Reviews Grid */}
