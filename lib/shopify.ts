@@ -143,6 +143,13 @@ export async function getShopifyProducts(first = 50) {
  * Fetch a single product by handle / slug
  */
 export async function getShopifyProductByHandle(handle: string) {
+  let cleanHandle = handle;
+  try {
+    cleanHandle = decodeURIComponent(handle);
+  } catch (e) {
+    cleanHandle = handle;
+  }
+
   const query = `
     query getProductByHandle($handle: String!) {
       product(handle: $handle) {
@@ -196,13 +203,38 @@ export async function getShopifyProductByHandle(handle: string) {
   `;
 
   try {
-    const data = await shopifyFetch<{ product: any }>({
+    // 1. Try with clean decoded handle
+    let data = await shopifyFetch<{ product: any }>({
       query,
-      variables: { handle },
+      variables: { handle: cleanHandle },
     });
 
-    const node = data.product;
-    if (!node) return null;
+    // 2. If not found and cleanHandle differs from raw handle, try raw handle
+    if (!data?.product && cleanHandle !== handle) {
+      data = await shopifyFetch<{ product: any }>({
+        query,
+        variables: { handle },
+      });
+    }
+
+    let node = data?.product;
+
+    // 3. Fallback: search across all shopify products list
+    if (!node) {
+      const allProducts = await getShopifyProducts(50);
+      const found = allProducts.find(
+        (p: any) =>
+          p.slug === cleanHandle ||
+          p.slug === handle ||
+          p.name?.toLowerCase() === cleanHandle.toLowerCase() ||
+          p.id === cleanHandle ||
+          p.id === handle
+      );
+      if (found) {
+        return found;
+      }
+      return null;
+    }
 
     const minPrice = parseFloat(node.priceRange?.minVariantPrice?.amount || '0');
     const comparePrice = parseFloat(node.compareAtPriceRange?.minVariantPrice?.amount || '0');
