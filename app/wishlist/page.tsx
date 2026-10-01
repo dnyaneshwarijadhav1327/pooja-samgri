@@ -86,7 +86,7 @@ export default function WishlistPage() {
 
                   <button
                     onClick={() => addToCart(item)}
-                    className="px-3.5 py-2 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition-colors"
+                    className="px-3.5 py-2 rounded-lg bg-[#F59E0B] hover:bg-[#D97706] text-black hover:text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition-colors font-['Times_New_Roman',_Times,_serif]"
                   >
                     <ShoppingBag className="w-3.5 h-3.5" /> Add to Cart
                   </button>

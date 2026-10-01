@@ -220,7 +220,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={handleAddToCart}
-                  className="flex-1 py-3.5 px-6 rounded-xl bg-black hover:bg-black/80 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all font-['Times_New_Roman',_Times,_serif]"
+                  className="flex-1 py-3.5 px-6 rounded-xl bg-[#F59E0B] hover:bg-[#D97706] text-black hover:text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all font-['Times_New_Roman',_Times,_serif]"
                 >
                   <ShoppingBag className="w-4 h-4" /> Add to Cart
                 </button>

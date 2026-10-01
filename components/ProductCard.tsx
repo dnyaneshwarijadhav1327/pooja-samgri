@@ -151,7 +151,7 @@ export default function ProductCard({ product, onQuickView }: Props) {
 
         <button
           onClick={handleAddToCart}
-          className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-black hover:bg-black/80 text-white text-[10px] sm:text-xs font-bold flex items-center gap-1 shadow-xs transition-colors font-['Times_New_Roman',_Times,_serif]"
+          className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-[#F59E0B] hover:bg-[#D97706] text-black hover:text-white text-[10px] sm:text-xs font-bold flex items-center gap-1 shadow-xs transition-colors font-['Times_New_Roman',_Times,_serif]"
         >
           <ShoppingBag className="w-3 sm:w-3.5 h-3 sm:h-3.5" /> <span className="hidden min-[400px]:inline">Add</span>
         </button>

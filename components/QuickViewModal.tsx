@@ -135,7 +135,7 @@ export default function QuickViewModal({ product, onClose }: Props) {
             <div className="flex gap-2">
               <button
                 onClick={handleAddToCart}
-                className="flex-1 py-3 px-4 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-colors"
+                className="flex-1 py-3 px-4 rounded-xl bg-[#F59E0B] hover:bg-[#D97706] text-black hover:text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-colors font-['Times_New_Roman',_Times,_serif]"
               >
                 <ShoppingBag className="w-4 h-4" /> Add to Cart
               </button>

@@ -146,7 +146,7 @@ export default function PujaKitSection({ kits = [] }: Props) {
                 image: mainImg,
                 quantityUnit: kit.quantityUnit,
               })}
-              className="px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-xs"
+              className="px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-[#F59E0B] hover:bg-[#D97706] text-black hover:text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-xs"
             >
               <ShoppingBag className="w-3.5 h-3.5" /> Add
             </button>
