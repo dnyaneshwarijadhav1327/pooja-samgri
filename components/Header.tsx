@@ -45,30 +45,35 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-7">
             <Link
               href="/"
+              prefetch={true}
               className="text-sm font-semibold text-[#4A0E17] hover:text-[#D97706] transition-colors"
             >
               Home
             </Link>
             <Link
               href="/shop"
+              prefetch={true}
               className="text-sm font-semibold text-[#3A2A20] hover:text-[#D97706] transition-colors"
             >
               Shop
             </Link>
             <Link
               href="/category/puja-kits"
+              prefetch={true}
               className="text-sm font-semibold text-[#3A2A20] hover:text-[#D97706] transition-colors"
             >
               Puja Kits
             </Link>
             <Link
               href="/about"
+              prefetch={true}
               className="text-sm font-semibold text-[#3A2A20] hover:text-[#D97706] transition-colors"
             >
               About Us
             </Link>
             <Link
               href="/contact"
+              prefetch={true}
               className="text-sm font-semibold text-[#3A2A20] hover:text-[#D97706] transition-colors"
             >
               Contact
@@ -90,6 +95,7 @@ export default function Header() {
             {/* User Account / Login */}
             <Link
               href="/account"
+              prefetch={true}
               className="p-2 text-[#4A0E17] hover:text-[#D97706] hover:bg-[#F5EFE4] rounded-full transition-colors hidden sm:block"
               title="My Account"
             >
@@ -99,6 +105,7 @@ export default function Header() {
             {/* Wishlist Icon */}
             <Link
               href="/wishlist"
+              prefetch={true}
               className="p-2 text-[#4A0E17] hover:text-[#D97706] hover:bg-[#F5EFE4] rounded-full transition-colors relative"
               title="Wishlist"
             >
@@ -133,6 +140,7 @@ export default function Header() {
         <div className="lg:hidden bg-white border-t border-stone-200 px-6 py-4 space-y-2.5 shadow-lg animate-in slide-in-from-top-2">
           <Link
             href="/"
+            prefetch={true}
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-serif font-bold text-[#4A0E17] py-2 border-b border-stone-100"
           >
@@ -140,6 +148,7 @@ export default function Header() {
           </Link>
           <Link
             href="/shop"
+            prefetch={true}
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
           >
@@ -147,6 +156,7 @@ export default function Header() {
           </Link>
           <Link
             href="/category/puja-kits"
+            prefetch={true}
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
           >
@@ -154,6 +164,7 @@ export default function Header() {
           </Link>
           <Link
             href="/about"
+            prefetch={true}
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
           >
@@ -161,6 +172,7 @@ export default function Header() {
           </Link>
           <Link
             href="/contact"
+            prefetch={true}
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
           >
@@ -168,6 +180,7 @@ export default function Header() {
           </Link>
           <Link
             href="/account"
+            prefetch={true}
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-serif font-semibold text-[#3A2A20] py-2 border-b border-stone-100"
           >
@@ -175,6 +188,7 @@ export default function Header() {
           </Link>
           <Link
             href="/track-order"
+            prefetch={true}
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-serif font-bold text-[#D97706] py-2"
           >

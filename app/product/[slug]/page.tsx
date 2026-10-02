@@ -4,8 +4,7 @@ import { notFound } from 'next/navigation';
 import ProductDetailClient from '@/components/ProductDetailClient';
 import { getShopifyProductByHandle, getShopifyProducts } from '@/lib/shopify';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 30;
 
 interface Props {
   params: {

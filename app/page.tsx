@@ -6,8 +6,7 @@ import PujaKitSection from '@/components/PujaKitSection';
 import ProductMakingSection from '@/components/ProductMakingSection';
 import ReviewSection from '@/components/ReviewSection';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 30;
 
 const fallbackEssentials = [
   {

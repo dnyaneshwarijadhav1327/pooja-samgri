@@ -53,32 +53,32 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-[#FAF6EE]/80">
               <li>
-                <Link href="/shop" className="hover:text-[#D97706] transition-colors">
+                <Link href="/shop" prefetch={true} className="hover:text-[#D97706] transition-colors">
                   All Products
                 </Link>
               </li>
               <li>
-                <Link href="/category/puja-essentials" className="hover:text-[#D97706] transition-colors">
+                <Link href="/category/puja-essentials" prefetch={true} className="hover:text-[#D97706] transition-colors">
                   Pooja Essentials
                 </Link>
               </li>
               <li>
-                <Link href="/category/dhoop-incense" className="hover:text-[#D97706] transition-colors">
+                <Link href="/category/dhoop-incense" prefetch={true} className="hover:text-[#D97706] transition-colors">
                   Dhoop & Incense
                 </Link>
               </li>
               <li>
-                <Link href="/category/havan-samagri" className="hover:text-[#D97706] transition-colors">
+                <Link href="/category/havan-samagri" prefetch={true} className="hover:text-[#D97706] transition-colors">
                   Havan Samagri
                 </Link>
               </li>
               <li>
-                <Link href="/category/gomaya-products" className="hover:text-[#D97706] transition-colors">
+                <Link href="/category/gomaya-products" prefetch={true} className="hover:text-[#D97706] transition-colors">
                   Gomaya Products
                 </Link>
               </li>
               <li>
-                <Link href="/category/puja-kits" className="hover:text-[#D97706] transition-colors">
+                <Link href="/category/puja-kits" prefetch={true} className="hover:text-[#D97706] transition-colors">
                   Complete Puja Kits
                 </Link>
               </li>
@@ -92,12 +92,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-[#FAF6EE]/80">
               <li>
-                <Link href="/about" className="hover:text-[#D97706] transition-colors">
+                <Link href="/about" prefetch={true} className="hover:text-[#D97706] transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#D97706] transition-colors">
+                <Link href="/contact" prefetch={true} className="hover:text-[#D97706] transition-colors">
                   Contact Us
                 </Link>
               </li>

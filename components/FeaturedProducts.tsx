@@ -39,6 +39,7 @@ export default function FeaturedProducts({ products }: Props) {
         <div className="flex flex-row items-center justify-end mb-3 sm:mb-4">
           <Link
             href="/shop"
+            prefetch={true}
             className="px-3 sm:px-5 py-1.5 sm:py-2 rounded-xl bg-[#F59E0B] hover:bg-[#D97706] text-black hover:text-white text-[11px] sm:text-xs font-bold border border-[#D97706]/40 transition-all shadow-sm shrink-0"
           >
             Explore All ➔
