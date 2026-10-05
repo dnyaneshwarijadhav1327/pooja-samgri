@@ -35,9 +35,6 @@ export default function Header() {
               <span className="text-xl sm:text-2xl font-serif font-bold text-[#4A0E17] tracking-tight block leading-none">
                 Pooja Sanskar
               </span>
-              <span className="text-[10px] sm:text-[11px] font-sans font-medium text-[#D97706] tracking-wider uppercase block mt-0.5">
-                Pure Samagri. Sacred Traditions.
-              </span>
             </div>
           </Link>
 
