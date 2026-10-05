@@ -34,7 +34,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full aspect-[3/4] min-[420px]:aspect-[4/5] sm:aspect-[21/9] md:h-[480px] lg:h-[540px] overflow-hidden bg-[#FAF6EE] select-none">
+    <section className="relative w-full aspect-[3/4] min-[420px]:aspect-[4/5] sm:aspect-[21/9] md:h-[480px] lg:h-[540px] overflow-hidden bg-[#2A160A] select-none">
       {/* ── Full-Screen Background Images ── */}
       <div className="absolute inset-0 z-0">
         {HERO_SLIDES.map((slide, index) => (
@@ -44,15 +44,18 @@ export default function HeroSection() {
               index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
           >
-            {/* Image — full brightness, high quality, responsive fit */}
+            {/* Softened wallpaper to highlight the top bar & sidebar */}
             <img
               src={slide.url}
               alt={slide.title}
-              className="w-full h-full object-cover sm:object-cover object-center"
+              className="w-full h-full object-cover sm:object-cover object-center opacity-80 brightness-[0.85] contrast-[0.92]"
             />
           </div>
         ))}
       </div>
+
+      {/* Soft Vignette Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25 pointer-events-none z-10" />
     </section>
   );
 }
