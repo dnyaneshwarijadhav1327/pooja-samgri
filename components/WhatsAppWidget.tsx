@@ -13,7 +13,7 @@ export default function WhatsAppWidget() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 bg-[#25D366] hover:bg-[#1EBE5D] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group"
+      className="fixed bottom-6 right-6 z-40 hidden sm:flex items-center gap-2 px-4 py-3 bg-[#25D366] hover:bg-[#1EBE5D] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group"
       aria-label="Chat with us on WhatsApp"
     >
       <MessageCircle className="w-5 h-5 fill-current" />

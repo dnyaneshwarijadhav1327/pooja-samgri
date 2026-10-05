@@ -16,7 +16,7 @@ export default function ProductMakingVideoWidget() {
     <>
       {/* 1. Floating Bottom-Right Video Trigger Badge */}
       {!isOpen && (
-        <div className="fixed bottom-24 right-6 z-40 flex items-center">
+        <div className="fixed bottom-24 right-6 z-40 hidden sm:flex items-center">
           <button
             onClick={() => setIsOpen(true)}
             className="group relative flex items-center gap-2.5 p-2 pr-4 bg-[#4A0E17] text-[#FAF6EE] rounded-full shadow-2xl border-2 border-[#D97706] hover:bg-[#380B12] transition-all duration-300 transform hover:scale-105"
